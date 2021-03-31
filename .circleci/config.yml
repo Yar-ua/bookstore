@@ -1,64 +1,131 @@
 version: 2.1
-
-executors:
-  default:
-    working_directory: ~/repo
-    description: The official CircleCI Ruby Docker image
+jobs:
+  build:
+    working_directory: ~/bookstore
+    parallelism: 2
     docker:
       - image: circleci/ruby:2.7.2
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+      - image: circleci/postgres:9.6
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: bookstore_test
+          DATABASE_URL: "postgres://ubuntu@localhost:5432/bookstore_test"
 
-caches:
-  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
-  - &bundle_cache v2-repo-
-
-commands:
-  defaults:
     steps:
       - checkout
+
+      # Download and cache dependencies
       - restore_cache:
           keys:
-            - *bundle_cache_full
-            - *bundle_cache
-      - run: bundle install --path vendor/bundle
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
-          key: *bundle_cache_full
           paths:
-            - vendor/bundle
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-  run_linters:
-    description: command to start linters
-    steps:
       - run:
-          name: rubocop
-          command: bundle exec rubocop --require rubocop-rspec
-          
-  run_specs:
-    steps:
+          name: Set up DB
+          command: |
+            bundle exec rake db:create db:schema:load --trace
+            bundle exec rake db:migrate
       - run:
-          name: run_specs
+          name: run tests
           command: bundle exec rspec --format progress spec
-      - store_artifacts:
-          path: ~/repo/coverage
-          destination: coverage
 
-jobs:
-  lintering:
-    executor: default
-    steps:
-      - defaults
-      - run_linters
-  run_specs:
-    executor: default
-    steps:
-      - defaults
-      - run_specs
 
-workflows:
-  version: 2.1
-  build:
-    jobs:
-      - lintering
-      - run_specs:
-          requires:
-            - lintering
+      #     command: |
+      #       mkdir /tmp/test-results
+      #       TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+      #       bundle exec rspec --format progress \
+      #                       --out /tmp/test-results/rspec.xml \
+      #                       --format progress \
+      #                       $TEST_FILES
+      # # collect reports
+      # - store_test_results:
+      #     path: /tmp/test-results
+      # - store_artifacts:
+      #     path: /tmp/test-results
+      #     destination: test-results
+
+
+
+
+
+
+
+# version: 2.1
+
+# executors:
+#   default:
+#     working_directory: ~/repo
+#     description: The official CircleCI Ruby Docker image
+#     docker:
+#       - image: circleci/ruby:2.7.2
+
+# caches:
+#   - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
+#   - &bundle_cache v2-repo-
+
+# commands:
+#   defaults:
+#     steps:
+#       - checkout
+#       - restore_cache:
+#           keys:
+#             - *bundle_cache_full
+#             - *bundle_cache
+#       - run: bundle install --path vendor/bundle
+
+#       - save_cache:
+#           key: *bundle_cache_full
+#           paths:
+#             - vendor/bundle
+
+#   run_linters:
+#     description: command to start linters
+#     steps:
+#       - run:
+#           name: rubocop
+#           command: bundle exec rubocop --require rubocop-rspec
+          
+#   run_specs:
+#     steps:
+#       - run:
+#           name: run_specs
+#           command: bundle exec rspec --format progress spec
+#       - store_artifacts:
+#           path: ~/repo/coverage
+#           destination: coverage
+
+# jobs:
+#   lintering:
+#     executor: default
+#     steps:
+#       - defaults
+#       - run_linters
+#   run_specs:
+#     executor: default
+#     steps:
+#       - defaults
+#       - run_specs
+
+# workflows:
+#   version: 2.1
+#   build:
+#     jobs:
+#       - lintering
+#       - run_specs:
+#           requires:
+#             - lintering
