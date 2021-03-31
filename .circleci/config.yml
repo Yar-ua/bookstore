@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/bookstore
     docker:
-      - image: ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2
         auth:
           username: mydockerhub-user
           password:
