@@ -2,6 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # host: localhost
+  # port: 5432
 
 development:
   <<: *default
@@ -12,8 +14,8 @@ test:
   database: bookstore_test
   timeout: 5000
   # host: postgres
-  username: yar
-  password: ""
+  # username: yar
+  # password: ""
 
 production:
   <<: *default
