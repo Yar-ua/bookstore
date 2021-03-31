@@ -2,7 +2,6 @@ version: 2.1
 jobs:
   build:
     working_directory: ~/bookstore
-    parallelism: 2
     docker:
       - image: circleci/ruby:2.7.2
         environment:
