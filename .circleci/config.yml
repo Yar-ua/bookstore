@@ -1,131 +1,85 @@
 version: 2.1
-jobs:
-  build:
-    working_directory: ~/bookstore
+ 
+executors:
+  default:
+    working_directory: ~/repo
+    description: The official CircleCI Ruby Docker image
     docker:
-      - image: circleci/ruby:2.7.2
-        environment:
-          RAILS_ENV: test
-          PGHOST: 127.0.0.1
-          PGUSER: postgres
-      - image: circleci/postgres:9.6
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+      - image: circleci/ruby:3.0.0
+      - image: circleci/postgres:9.5-alpine
+ 
+        environment: # add POSTGRES environment variables.
+          POSTGRES_USER: yar-ua
           POSTGRES_DB: bookstore_test
-          DATABASE_URL: "postgres://ubuntu@localhost:5432/bookstore_test"
-
+          POSTGRES_PASSWORD: "postgres"
+ 
+ 
+caches:
+  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
+  - &bundle_cache v2-repo-
+ 
+commands:
+  defaults:
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            - *bundle_cache
+      - run: bundle install --path vendor/bundle
+ 
+ 
       - save_cache:
+          key: *bundle_cache_full
           paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
+            - vendor/bundle
+ 
+  run_linters:
+    description: command to start linters
+    steps:
       - run:
-          name: Set up DB
-          command: |
-            bundle exec rake db:create --trace
-            bundle exec rake db:migrate --trace
-
+          name: rubocop
+          command: bundle exec rubocop --require rubocop-rspec
+  run_specs:
+    steps:
       - run:
-          name: run tests
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: run_specs
           command: bundle exec rspec --format progress spec
-
-
-      #     command: |
-      #       mkdir /tmp/test-results
-      #       TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-      #       bundle exec rspec --format progress \
-      #                       --out /tmp/test-results/rspec.xml \
-      #                       --format progress \
-      #                       $TEST_FILES
-      # # collect reports
-      # - store_test_results:
-      #     path: /tmp/test-results
-      # - store_artifacts:
-      #     path: /tmp/test-results
-      #     destination: test-results
-
-
-
-
-
-
-
-# version: 2.1
-
-# executors:
-#   default:
-#     working_directory: ~/repo
-#     description: The official CircleCI Ruby Docker image
-#     docker:
-#       - image: circleci/ruby:2.7.2
-
-# caches:
-#   - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
-#   - &bundle_cache v2-repo-
-
-# commands:
-#   defaults:
-#     steps:
-#       - checkout
-#       - restore_cache:
-#           keys:
-#             - *bundle_cache_full
-#             - *bundle_cache
-#       - run: bundle install --path vendor/bundle
-
-#       - save_cache:
-#           key: *bundle_cache_full
-#           paths:
-#             - vendor/bundle
-
-#   run_linters:
-#     description: command to start linters
-#     steps:
-#       - run:
-#           name: rubocop
-#           command: bundle exec rubocop --require rubocop-rspec
-          
-#   run_specs:
-#     steps:
-#       - run:
-#           name: run_specs
-#           command: bundle exec rspec --format progress spec
-#       - store_artifacts:
-#           path: ~/repo/coverage
-#           destination: coverage
-
-# jobs:
-#   lintering:
-#     executor: default
-#     steps:
-#       - defaults
-#       - run_linters
-#   run_specs:
-#     executor: default
-#     steps:
-#       - defaults
-#       - run_specs
-
-# workflows:
-#   version: 2.1
-#   build:
-#     jobs:
-#       - lintering
-#       - run_specs:
-#           requires:
-#             - lintering
+ 
+      - store_artifacts:
+          path: ~/repo/coverage
+          destination: coverage
+ 
+jobs:
+  lintering:
+    executor: default
+    steps:
+      - defaults
+      - run_linters
+  run_specs:
+    executor: default
+    parallelism: 2
+    environment:
+      PGHOST: 127.0.0.1
+      PGUSER: yar-ua
+      PGPASSWORD: "postgres"
+      BOOKSTORE_DATABASE_PASSWORD: "postgres"
+      RAILS_ENV: test
+    steps:
+      - defaults
+ 
+      - run_specs
+ 
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - lintering
+      - run_specs:
+          requires:
+            - lintering
