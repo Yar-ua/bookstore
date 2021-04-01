@@ -8,7 +8,7 @@ executors:
       - image: circleci/ruby:2.7.2
       - image: circleci/postgres:9.5-alpine
  
-        environment: # add POSTGRES environment variables.
+        environment:
           POSTGRES_USER: yar-ua
           POSTGRES_DB: bookstore_test
           POSTGRES_PASSWORD: "postgres"
@@ -72,7 +72,6 @@ jobs:
       RAILS_ENV: test
     steps:
       - defaults
- 
       - run_specs
  
 workflows:
