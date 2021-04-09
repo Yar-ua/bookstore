@@ -48,6 +48,9 @@ commands:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
       - run:
+          name: Prempile assets
+          command: bundle exec rails assets:precompile
+      - run:
           name: run_specs
           command: bundle exec rspec --format progress spec
  
