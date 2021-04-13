@@ -72,7 +72,7 @@ jobs:
       PGUSER: $CI_PG_USER
       PGPASSWORD: $CI_PG_PASSWORD
       BOOKSTORE_DATABASE_PASSWORD: $CI_DB_PASSWORD
-      RAILS_ENV: $CI_ENV
+      RAILS_ENV: test
     steps:
       - defaults
       - run_specs
