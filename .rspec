@@ -1,1 +1,2 @@
---require spec_helper
+--require support/spec_loader
+--require rails_helper

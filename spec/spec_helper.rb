@@ -1,11 +1,3 @@
-require 'simplecov'
-SimpleCov.start do
-  minimum_coverage 90
-  add_filter '/spec/'
-end
-
-require 'capybara/rspec'
-
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
