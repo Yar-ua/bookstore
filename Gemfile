@@ -17,6 +17,8 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
@@ -34,6 +36,4 @@ group :test do
 end
 
 gem 'haml-rails', '~> 2.0'
-gem 'rubocop-rails', require: false
-gem 'rubocop-rspec', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

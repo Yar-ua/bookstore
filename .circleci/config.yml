@@ -38,7 +38,7 @@ commands:
     steps:
       - run:
           name: rubocop
-          command: bundle exec rubocop --require rubocop-rspec
+          command: bundle exec rubocop
   run_specs:
     steps:
       - run:
@@ -68,11 +68,11 @@ jobs:
     executor: default
     parallelism: 2
     environment:
-      PGHOST: 127.0.0.1
-      PGUSER: yar-ua
-      PGPASSWORD: "postgres"
-      BOOKSTORE_DATABASE_PASSWORD: "postgres"
-      RAILS_ENV: test
+      PGHOST: CI_PG_HOST
+      PGUSER: CI_PG_USER
+      PGPASSWORD: CI_PG_PASSWORD
+      BOOKSTORE_DATABASE_PASSWORD: CI_DB_PASSWORD
+      RAILS_ENV: CI_ENV
     steps:
       - defaults
       - run_specs
