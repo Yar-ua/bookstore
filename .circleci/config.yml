@@ -54,7 +54,7 @@ commands:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
-          command: bundle exec rails db:schema:load --trace
+          command: bundle exec rails db:create db:migrate --trace
       - run:
           name: run_specs
           command: bundle exec rspec --format progress spec
