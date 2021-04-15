@@ -6,18 +6,7 @@ executors:
     description: The official CircleCI Ruby Docker image
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
-        # environment:
-          # PGHOST: PGHOST
-          # PGUSER: PGUSER
-          # PGPASSWORD: PGPASSWORD
-          # BOOKSTORE_DATABASE_PASSWORD: BOOKSTORE_DATABASE_PASSWORD
-          # RAILS_ENV: RAILS_ENV
-      - image: circleci/postgres:9.5-alpine
-        # environment:
-        #   POSTGRES_USER: POSTGRES_USER
-        #   POSTGRES_DB: POSTGRES_DB
-        #   POSTGRES_PASSWORD: POSTGRES_PASSWORD
- 
+      - image: circleci/postgres:9.5-alpine 
  
 caches:
   - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
@@ -30,8 +19,7 @@ commands:
       - restore_cache:
           keys:
             - *bundle_cache
-      - run: bundle install --path vendor/bundle
- 
+      - run: bundle install --path vendor/bundle 
  
       - save_cache:
           key: *bundle_cache_full
@@ -54,7 +42,7 @@ commands:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
-          command: bundle exec rails db:create db:migrate --trace
+          command: bundle exec rails db:schema:load --trace
       - run:
           name: run_specs
           command: bundle exec rspec --format progress spec
@@ -71,7 +59,6 @@ jobs:
       - run_linters
   run_specs:
     executor: default
-    parallelism: 2
     steps:
       - defaults
       - run_specs
