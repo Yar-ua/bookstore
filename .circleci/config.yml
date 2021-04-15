@@ -6,17 +6,17 @@ executors:
     description: The official CircleCI Ruby Docker image
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
-        environment:
-          PGHOST: PGHOST
-          PGUSER: PGUSER
-          PGPASSWORD: PGPASSWORD
-          BOOKSTORE_DATABASE_PASSWORD: BOOKSTORE_DATABASE_PASSWORD
-          RAILS_ENV: RAILS_ENV
+        # environment:
+          # PGHOST: PGHOST
+          # PGUSER: PGUSER
+          # PGPASSWORD: PGPASSWORD
+          # BOOKSTORE_DATABASE_PASSWORD: BOOKSTORE_DATABASE_PASSWORD
+          # RAILS_ENV: RAILS_ENV
       - image: circleci/postgres:9.5-alpine
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: POSTGRES_DB
-          POSTGRES_PASSWORD: POSTGRES_PASSWORD
+        # environment:
+        #   POSTGRES_USER: POSTGRES_USER
+        #   POSTGRES_DB: POSTGRES_DB
+        #   POSTGRES_PASSWORD: POSTGRES_PASSWORD
  
  
 caches:
