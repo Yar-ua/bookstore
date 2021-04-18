@@ -7,7 +7,7 @@
             = image_tag("http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", class: "img-shadow general-thumbnail-img", alt: book.title)
             .thumb-hover
               .general-thumb-link-wrap
-                %a.thumb-hover-link{href: book_path(book)}
+                = link_to book_path(book), class: "thumb-hover-link" do
                   %i.fa.fa-eye.thumb-icon.pt-10{'aria-hidden': "true"}
                 %a.thumb-hover-link{href: "", onclick: "$(this).siblings('form').submit()"}
                   %i.fa.fa-shopping-cart.thumb-icon.pt-10
