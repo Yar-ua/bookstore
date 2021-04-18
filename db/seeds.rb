@@ -5,9 +5,9 @@ FactoryBot.create(:category, name: 'Photo')
 FactoryBot.create(:category, name: 'Web Design')
 FactoryBot.create(:category, name: 'Web Development')
 
-8.times { FactoryBot.create(:author) }
+40.times { FactoryBot.create(:author) }
 
-23.times do
+100.times do
   FactoryBot.create(:book, category_id: Category.all.sample.id)
 end
 
