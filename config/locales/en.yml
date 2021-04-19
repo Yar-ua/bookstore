@@ -1,2 +1,6 @@
 en:
   hello: "Hello world"
+
+  pagy:
+    nav:
+      next: "View more"

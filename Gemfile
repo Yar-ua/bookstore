@@ -36,8 +36,9 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'factory_bot_rails'
+gem 'faker', require: false
 gem 'haml-rails', '~> 2.0'
+gem 'pagy'
+gem 'rails-i18n', '~> 6.0.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem "factory_bot_rails"
-gem 'faker', :require => false
-gem 'kaminari'
