@@ -8,6 +8,6 @@
   .mb-120
     #books
       = render 'books'
-      
+    
     #paginator.text-center
-      = link_to_next_page @books, 'View More', remote: true, id: 'view_more', class: "btn btn-primary"
+      = render 'pagination', pagy: @pagy
