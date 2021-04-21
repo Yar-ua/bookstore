@@ -5,3 +5,5 @@ import 'bootstrap-sass/assets/javascripts/bootstrap';
 window.$ = $;
 window.jQuery = $;
 Rails.start()
+
+import '../js/book';

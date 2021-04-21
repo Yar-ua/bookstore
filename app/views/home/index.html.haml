@@ -36,12 +36,12 @@
       %span.sr-only Next
 .container
   .jumbotron.text-center.mb-0
-    %h2.h1 Welcome to our amazing Bookstore!
+    %h2.h1= t('home.welcome')
     .mb-res-50
-      %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
-    %a.button.btn.btn-default{href: catalog_path} Get Started
+      %p= t('home.description')
+    %a.button.btn.btn-default{href: catalog_path}= t('home.get_started')
   .mb-35
-    %h3 Best Sellers
+    %h3= t('home.best_sellers')
     .row
       .col-sm-6.col-md-3.best-sellers
         .general-thumb-wrap

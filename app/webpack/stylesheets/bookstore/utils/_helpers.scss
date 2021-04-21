@@ -64,6 +64,9 @@
 .mt-10 {
   margin-top: 10px;
 }
+.d-n {
+  display: none;
+}
 
 @each $size in (5, 10, 15, 20, 35, 55, 240) {
   .mr-#{$size} {

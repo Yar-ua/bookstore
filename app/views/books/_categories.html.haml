@@ -1,6 +1,6 @@
 %li.mr-35
   %a.filter-link{href: catalog_path}
-    All
+    = t('categories.all')
     %span.badge.general-badge= Book.count
 - @categories.each do |category|
   %li.mr-35
