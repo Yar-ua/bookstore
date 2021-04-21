@@ -1,0 +1,73 @@
+version: 2.1
+ 
+executors:
+  default:
+    working_directory: ~/repo
+    description: The official CircleCI Ruby Docker image
+    docker:
+      - image: circleci/ruby:2.7.2-node-browsers
+      - image: circleci/postgres:9.5-alpine 
+ 
+caches:
+  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
+  - &bundle_cache v2-repo-
+
+commands:
+  defaults:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - *bundle_cache
+      - run: bundle install --path vendor/bundle 
+ 
+      - save_cache:
+          key: *bundle_cache_full
+          paths:
+            - vendor/bundle
+ 
+  run_linters:
+    description: command to start linters
+    steps:
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+  run_specs:
+    steps:
+      - run:
+          name: Precompile assets
+          command: bundle exec rails assets:precompile
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rake db:create db:migrate --trace
+      - run:
+          name: run_specs
+          command: bundle exec rspec --format progress spec
+ 
+      - store_artifacts:
+          path: ~/repo/coverage
+          destination: coverage
+ 
+jobs:
+  lintering:
+    executor: default
+    steps:
+      - defaults
+      - run_linters
+  run_specs:
+    executor: default
+    steps:
+      - defaults
+      - run_specs
+ 
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - lintering
+      - run_specs:
+          requires:
+            - lintering
