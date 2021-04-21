@@ -1,0 +1,23 @@
+require: rubocop-rspec
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+  - 'vendor/**/*'
+  - 'node_modules/**/*'
+  - 'bin/**/*'
+  - 'tmp/**/*'
+  - 'db/**/*'
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+RSpec/FilePath:
+  Enabled: false
+RSpec/ExpectActual:
+  Enabled: false
+Style/GlobalStdStream:
+  Enabled: false
