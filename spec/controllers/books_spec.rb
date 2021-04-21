@@ -1,16 +1,19 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Books', type: :request do
+RSpec.describe BooksController do
+  let(:book) { FactoryBot.create(:book, category_id: FactoryBot.create(:category, name: 'Photo').id) }
+  
   describe 'GET /index' do
     it 'returns http success' do
-      get '/books/index'
+      get :index
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'GET /show' do
+    before { get :show, params: { id: book.id } }
+    
     it 'returns http success' do
-      get '/books/show'
       expect(response).to have_http_status(:success)
     end
   end

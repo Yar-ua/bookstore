@@ -1,7 +1,7 @@
 %main.container
   = link_to :back, class: "general-back-link" do
     %i.fa.fa-long-arrow-left.mr-15
-    Back to results
+    = t('book.back_to_results')
   .row
     .col-sm-6
       .product-gallery
@@ -18,32 +18,33 @@
       %h1.mt-res-0= @book.title
       %p.lead.small= book_authors(@book)
       .row
-        .col-xs-12.col-md-4
-          %p.h1.in-gold-500.mt-10= number_to_euro(@book.price)
-        .col-xs-5.col-md-3
-          .input-group.general-position
-            %a.input-link{href: "#"}
-              %i.fa.fa-minus.line-height-40
-            %input.form-control.quantity-input{type: "text"}
-            %a.input-link{href: "#"}
-              %i.fa.fa-plus.line-height-40
-        .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position Add to Cart
+          
+        = render 'books/form_book'
+        
       .general-info-wrap.divider-lg#description
         %description{text: @book.description, size: 500}
-        %p Description
-        %p.lead.small.line-height-2= @book.description
+        %p= t('description')
+        %p.lead.small.line-height-2
+          %span#short_text
+            = short_book_description(@book)
+          - if @book.description.length > 100
+            %span#dots ...
+            %span#more_text.d-n
+              = @book.description
+            %a.b-n.in-gold-500.ml-10#btn_read_more= t('book_page.read_more')
+            %a.b-n.in-gold-500.ml-10#hide_read_more.d-n= t('book_page.hide_read_more')
+        
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left Year of publication
+          %p.pull-left= t('book.year_of_publication')
           %p.lead.small.pull-right= @book.year
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left Dimensions
+          %p.pull-left= t('book.dimensions')
           %p.lead.small.pull-right= book_dimensions(@book)
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left Materials
+          %p.pull-left= t('book.materials')
           %p.lead.small.pull-right= @book.materials
   .mb-80
     %h3 Write a Review

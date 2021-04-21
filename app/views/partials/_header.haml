@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand Yar's Bookstore
+      %a.navbar-brand= t('header.title')
       %a.shop-link.pull-right.visible-xs{href: "#"}
         %span.shop-icon
           %span.shop-quantity 3
@@ -19,20 +19,20 @@
           %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-            %a{href: root_path} Home
+            %a{href: root_path}= t('header.home')
           %li
-            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
+            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('header.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
               - @categories.each do |category|
                 %li.mr-35
                   %a.filter-link{href: catalog_path(category_id: category.id), value: category.id}
                     = category.name
           %li
-            %a{href: "#"} My account
+            %a{href: "#"}= t('header.account')
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            %a{href: root_path} Home
+            %a{href: root_path}= t('header.home')
           %li.dropdown
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
             %ul.dropdown-menu
@@ -42,6 +42,6 @@
                     = category.name
               %li.divider{role: "separator"}
               %li
-                %a{href: "#"} Log out
+                %a{href: "#"}= t('header.logout')
           %li
-            %a{href: "#"} My account
+            %a{href: "#"}= t('header.account')
