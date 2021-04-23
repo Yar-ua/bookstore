@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   before_action :set_current_sort, only: :index
 
   def index
-    @pagy, @books = pagy(set_and_sort_books, class: 'btn btn-primary')
+    @pagy, @books = pagy(SortBooks.new.sort(sort_params), class: 'btn btn-primary')
     @books = @books.decorate
     respond_to do |format|
       format.html
@@ -19,6 +19,10 @@ class BooksController < ApplicationController
   def show; end
 
   private
+  
+  def sort_params
+    params.permit(:category_id, :sort)
+  end
 
   def set_book
     @book = Book.find(params[:id]).decorate
@@ -35,16 +39,6 @@ class BooksController < ApplicationController
   end
 
   def set_current_sort
-    @current_sort = params[:sort].present? ? sort_key : sort_option(:newest)
-  end
-
-  def set_and_sort_books
-    books = params[:category_id].present? ? Book.where(category_id: params[:category_id]) : Book.all
-    books = books.order(sort_key[:order] => sort_key[:by]) if params[:sort]
-    books
-  end
-
-  def sort_key
-    sort_option(params[:sort].to_sym)
+    @current_sort = SortBooks.new.current_sort(sort_params)
   end
 end

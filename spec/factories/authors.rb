@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :author do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
-    biography { Faker::GreekPhilosophers.quote }
+    first_name { FFaker::Name.first_name }
+    last_name { FFaker::Name.last_name }
+    biography { FFaker::Lorem.sentences }
   end
 end

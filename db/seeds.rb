@@ -1,4 +1,4 @@
-require 'faker'
+require 'ffaker'
 
 FactoryBot.create(:category, name: 'Mobile Development')
 FactoryBot.create(:category, name: 'Photo')
