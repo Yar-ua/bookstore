@@ -3,7 +3,7 @@ FactoryBot.define do
     association :category, factory: :category
 
     title { Faker::Book.title }
-    description { Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) }
+    description { Faker::Lorem.paragraph_by_chars(number: 500, supplemental: false) }
     year { Faker::Number.between(from: 1980, to: 2020) }
     quantity { Faker::Number.between(from: 1, to: 100) }
     price { Faker::Number.between(from: 5, to: 100) }

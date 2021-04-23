@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   def index
     @pagy, @books = pagy(set_and_sort_books, class: 'btn btn-primary')
+    @books = @books.decorate
     respond_to do |format|
       format.html
       format.js { render 'index.js.haml', layout: false }
@@ -20,7 +21,7 @@ class BooksController < ApplicationController
   private
 
   def set_book
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:id]).decorate
   end
 
   def set_categories
