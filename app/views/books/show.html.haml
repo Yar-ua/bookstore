@@ -16,7 +16,7 @@
             %img{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
     .col-sm-6
       %h1.mt-res-0= @book.title
-      %p.lead.small= book_authors(@book)
+      %p.lead.small= @book.book_authors
       .row
           
         = render 'books/form_book'
@@ -26,8 +26,8 @@
         %p= t('description')
         %p.lead.small.line-height-2
           %span#short_text
-            = short_book_description(@book)
-          - if @book.description.length > 100
+            = @book.short_description
+          - if @book.big_description_length
             %span#dots ...
             %span#more_text.d-n
               = @book.description
@@ -41,7 +41,7 @@
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('book.dimensions')
-          %p.lead.small.pull-right= book_dimensions(@book)
+          %p.lead.small.pull-right= @book.dimensions
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('book.materials')
