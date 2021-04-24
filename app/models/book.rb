@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   
   belongs_to :category, counter_cache: true
 
-  validates :title, presence: true
+  validates :title, :description, presence: true
   validates :price, presence: true, numericality: true
   validates :height, :width, :depth, numericality: true
 end

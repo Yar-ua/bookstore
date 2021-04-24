@@ -1,5 +1,8 @@
 FactoryBot.define do
+  
+  CATEGORIES = ['Mobile Development', 'Photo', 'Web Design', 'Web Development']
+  
   factory :category do
-    name { FFaker::Book.unique.genre }
+    name { CATEGORIES.sample }
   end
 end

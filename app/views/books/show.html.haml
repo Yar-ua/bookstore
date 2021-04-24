@@ -28,7 +28,7 @@
           %span#short_text
             = @book.short_description
           - if @book.big_description_length
-            %span#dots ...
+            %span#dots= t('books.dots')
             %span#more_text.d-n
               = @book.description
             %a.b-n.in-gold-500.ml-10#btn_read_more= t('book_page.read_more')

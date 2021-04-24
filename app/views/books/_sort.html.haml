@@ -4,6 +4,6 @@
       = @current_sort[:title]
       %i.fa.fa-angle-down.dropdown-icon.pull-right
     %ul.dropdown-menu
-      - sort_options.each do |key, values|
+      - @sort_list.each do |key, values|
         %li
-          = link_to values[:title], catalog_path(sort_params(key).merge(category_id: @current_category.id))
+          = link_to values[:title], catalog_path(sort_params(key, @current_category.id)), class: "filter-link sort"

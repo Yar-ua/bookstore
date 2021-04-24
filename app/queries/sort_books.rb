@@ -1,4 +1,6 @@
 class SortBooks < ApplicationController
+  attr_reader :sort, :current_sort
+  
   SORT_OPTIONS = {
     newest: { title: 'Newest first', order: :created_at, by: :desc },
     popular: { title: 'Popular first', order: :created_at, by: :asc },
@@ -7,7 +9,6 @@ class SortBooks < ApplicationController
     title_a_z: { title: 'Title: A-Z', order: :title, by: :asc },
     title_z_a: { title: 'Title: Z-A', order: :title, by: :desc }
   }.freeze
-  private_constant :SORT_OPTIONS
   
   def sort(params)
     scoped = filter_by_category(params[:category_id])

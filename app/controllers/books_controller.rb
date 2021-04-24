@@ -1,14 +1,13 @@
 class BooksController < ApplicationController
   include Pagy::Backend
-  include SortHelper
 
   before_action :set_book, only: :show
   before_action :set_categories, only: %i[index show]
-  before_action :set_current_category, only: :index
-  before_action :set_current_sort, only: :index
+  before_action :set_current_category, :set_current_sort, :set_sort_list, only: :index
 
   def index
-    @pagy, @books = pagy(SortBooks.new.sort(sort_params), class: 'btn btn-primary')
+    @sort_books = SortBooks.new
+    @pagy, @books = pagy(@sort_books.sort(sort_params), class: 'btn btn-primary')
     @books = @books.decorate
     respond_to do |format|
       format.html
@@ -40,5 +39,9 @@ class BooksController < ApplicationController
 
   def set_current_sort
     @current_sort = SortBooks.new.current_sort(sort_params)
+  end
+  
+  def set_sort_list
+    @sort_list = SortBooks::SORT_OPTIONS
   end
 end
