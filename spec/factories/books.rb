@@ -3,7 +3,7 @@ FactoryBot.define do
     association :category, factory: :category
 
     title { FFaker::Book.title }
-    description { FFaker::Book.description[300..500] }
+    description { FFaker::Book.description(8) }
     year { rand(1980..2021) }
     quantity { rand(1..100) }
     price { rand(3.50..99.99).round(2) }

@@ -1,45 +1,43 @@
 en:
   header:
-    title: "Yar's Bookstore"
-    home: "Home"
-    shop: "Shop"
-    account: "My account"
-    logout: "Log out"
-    orders: "Orders"
-    settings: "settings"
+    title: Yar's Bookstore
+    home: Home
+    shop: Shop
+    account: My account
+    logout: Log out
+    orders: Orders
+    settings: settings
   
   footer:
-    support_email: "support@bookstore.com"
-    support_phone: "(555)-555-5555"
-  
-  footer:
-    
+    support_email: support@bookstore.com
+    support_phone: (555)-555-5555
   
   home: 
-    welcome: "Welcome to our amazing Bookstore!"
-    description: "We pore through hundreds of new books each month and select the five best we can find to share with our members."
-    get_started: "Get Started"
-    best_sellers: "Best Sellers"
+    welcome: Welcome to our amazing Bookstore!
+    description: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    get_started: Get Started
+    best_sellers: Best Sellers
   
   categories:
-    all: "All"
+    all: All
     
   books:
-    catalog: "Catalog"
-    description: "Description"
-    year_of_publication: "Year of publication"
-    dimensions: "Dimensions"
-    materials: "Materials"
+    catalog: Catalog
+    description: Description
+    year_of_publication: Year of publication
+    dimensions: Dimensions
+    materials: Materials
+    dots: ...
   
   book:
-    back_to_results: "Back to results"
+    back_to_results: Back to results
     
   
   book_page:
-    read_more: "read more"
-    hide_read_more: "hide read more"
-    add_to_cart: "Add to cart"
+    read_more: read more
+    hide_read_more: hide read more
+    add_to_cart: Add to cart
 
   pagy:
     nav:
-      next: "View more"
+      next: View more
