@@ -24,23 +24,24 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
+  gem 'pry'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
-  gem 'pry'
 end
 
 group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', require: false
   gem 'webdrivers'
 end
 
 gem 'draper'
 gem 'factory_bot_rails'
-gem 'haml-rails', '~> 2.0'
 gem 'ffaker', require: false
+gem 'haml-rails', '~> 2.0'
 gem 'pagy'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
