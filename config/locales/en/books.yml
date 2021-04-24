@@ -1,0 +1,19 @@
+en:
+  categories:
+    all: All
+
+  books:
+    catalog: Catalog
+    description: Description
+    year_of_publication: Year of publication
+    dimensions: Dimensions
+    materials: Materials
+    dots: ...
+  
+  book:
+    back_to_results: Back to results
+    
+  book_page:
+    read_more: read more
+    hide_read_more: hide read more
+    add_to_cart: Add to cart

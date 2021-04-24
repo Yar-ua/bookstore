@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   has_many :authorships, dependent: :destroy
   has_many :authors, through: :authorships, dependent: :destroy
-  
+
   belongs_to :category, counter_cache: true
 
   validates :title, :description, presence: true

@@ -6,7 +6,9 @@ RSpec.describe BooksController do
   describe 'GET /index' do
     it 'returns http success' do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response)
+        .to have_http_status(:success)
+        .and render_template(:index)
     end
   end
 
@@ -14,7 +16,9 @@ RSpec.describe BooksController do
     before { get :show, params: { id: book.id } }
 
     it 'returns http success' do
-      expect(response).to have_http_status(:success)
+      expect(response)
+        .to have_http_status(:success)
+        .and render_template(:show)
     end
   end
 end

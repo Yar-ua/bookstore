@@ -18,7 +18,7 @@ class BooksController < ApplicationController
   def show; end
 
   private
-  
+
   def sort_params
     params.permit(:category_id, :sort)
   end
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
   def set_current_sort
     @current_sort = SortBooks.new.current_sort(sort_params)
   end
-  
+
   def set_sort_list
     @sort_list = SortBooks::SORT_OPTIONS
   end
