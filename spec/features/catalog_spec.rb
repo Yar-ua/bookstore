@@ -12,7 +12,8 @@ RSpec.describe 'Catalog page', type: :feature do
   end
 
   it 'go to book category' do
-    find('a', class: 'filter-link category', text: book.category.name).click
+    find('#books')
+    first('a', class: 'filter-link category', text: book.category.name).click
     expect(page).to have_current_path catalog_path(category_id: book.category.id)
   end
 
