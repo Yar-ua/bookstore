@@ -1,17 +1,4 @@
-en:
-  header:
-    title: Yar's Bookstore
-    home: Home
-    shop: Shop
-    account: My account
-    logout: Log out
-    orders: Orders
-    settings: settings
-  
-  footer:
-    support_email: support@bookstore.com
-    support_phone: (555)-555-5555
-  
+en:  
   home: 
     welcome: Welcome to our amazing Bookstore!
     description: We pore through hundreds of new books each month and select the five best we can find to share with our members.

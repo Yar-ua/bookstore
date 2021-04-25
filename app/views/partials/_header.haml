@@ -15,31 +15,26 @@
         %span.shop-quantity 3
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
-        %button.close{type: "button", 'aria-label': "Close"}
-          %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-            %a{href: root_path}= t('header.home')
-          %li
-            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('header.shop')
-            %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              - @categories.each do |category|
-                %li.mr-35
-                  %a.filter-link{href: catalog_path(category_id: category.id), value: category.id}
-                    = category.name
+            = link_to t('header.home'), root_path
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('header.shop')
+            %ul.dropdown-menu
+              = render 'books/categories', cached: true
+              %li.divider{role: "separator"}
+              %li
+                %a{href: "#"}= t('header.logout')
           %li
             %a{href: "#"}= t('header.account')
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            %a{href: root_path}= t('header.home')
+            = link_to t('header.home'), root_path
           %li.dropdown
-            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
+            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('header.shop')
             %ul.dropdown-menu
-              - @categories.each do |category|
-                %li.mr-35
-                  %a.filter-link{href: catalog_path(category_id: category.id), value: category.id}
-                    = category.name
+              = render 'books/categories', cached: true
               %li.divider{role: "separator"}
               %li
                 %a{href: "#"}= t('header.logout')

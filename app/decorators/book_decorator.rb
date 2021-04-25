@@ -1,4 +1,5 @@
 class BookDecorator < Draper::Decorator
+  include ActionView::Helpers::NumberHelper
   delegate_all
 
   VISIBLE_LENGTH_DESCRIPTION_BOOK = 250
@@ -17,5 +18,9 @@ class BookDecorator < Draper::Decorator
 
   def big_description_length
     object.description.length > VISIBLE_LENGTH_DESCRIPTION_BOOK
+  end
+
+  def price_to_euro
+    number_to_currency(object.price, unit: '€')
   end
 end
