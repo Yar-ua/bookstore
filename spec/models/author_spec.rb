@@ -1,12 +1,15 @@
 RSpec.describe Author do
-  describe 'with database columns' do
-    it { is_expected.to have_db_column(:first_name).of_type(:string) }
-    it { is_expected.to have_db_column(:last_name).of_type(:string) }
-    it { is_expected.to have_db_column(:biography).of_type(:text) }
+  let(:author) { FactoryBot.create(:author) }
+
+  describe 'validation' do
+    it { expect(author).to validate_presence_of(:first_name) }
+    it { expect(author).to validate_presence_of(:last_name) }
+    it { expect(author).to validate_length_of(:first_name) }
+    it { expect(author).to validate_length_of(:last_name) }
   end
 
   describe 'with assosiations' do
-    it { is_expected.to have_many(:authorships) }
-    it { is_expected.to have_many(:books).through(:authorships).dependent(:destroy) }
+    it { is_expected.to have_many(:author_books) }
+    it { is_expected.to have_many(:books).through(:author_books).dependent(:destroy) }
   end
 end

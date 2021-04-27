@@ -1,4 +1,4 @@
-class SortBooks < ApplicationController
+class BooksQuery
   SORT_OPTIONS = {
     newest: { title: I18n.t('sort.newest'), order: :created_at, by: :desc },
     popular: { title: I18n.t('sort.popular'), order: :created_at, by: :asc },
@@ -8,13 +8,13 @@ class SortBooks < ApplicationController
     title_z_a: { title: I18n.t('sort.title_z_a'), order: :title, by: :desc }
   }.freeze
 
-  def sort(params)
-    scoped = filter_by_category(params[:category_id])
-    sort_books(scoped, params[:sort])
+  def initialize(sort_params)
+    @sort_params = sort_params
   end
 
-  def current_sort(params)
-    params[:sort].present? ? sort_key(params[:sort]) : sort_option(:newest)
+  def call
+    scoped = filter_by_category(@sort_params[:category_id])
+    sort_books(scoped, @sort_params[:sort])
   end
 
   private

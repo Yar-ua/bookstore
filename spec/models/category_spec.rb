@@ -1,7 +1,9 @@
 RSpec.describe Category do
-  context 'with database columns' do
-    it { is_expected.to have_db_column(:name).of_type(:string) }
-    it { is_expected.to have_db_column(:books_count).of_type(:integer) }
+  let(:author) { create(:category) }
+
+  describe 'validation' do
+    it { expect(author).to validate_presence_of(:name) }
+    it { expect(author).to validate_length_of(:name) }
   end
 
   context 'with assosiations' do

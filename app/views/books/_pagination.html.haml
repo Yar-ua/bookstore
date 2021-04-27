@@ -1,4 +1,4 @@
 - link = pagy_link_proc(pagy, 'class="btn btn-primary pagination-button"')
 %nav.pagy_nav.pagination{"aria-label" => "pager", :role => "navigation"}
-  - if pagy.last != pagy.page
+  - if pagy.next
     %a!= link.call(pagy.next, I18n.t('pagy.nav.next'), 'aria-label="next"')

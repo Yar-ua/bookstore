@@ -1,4 +1,4 @@
-class BookDecorator < Draper::Decorator
+class BookDecorator < ApplicationDecorator
   include ActionView::Helpers::NumberHelper
   delegate_all
 
@@ -9,18 +9,18 @@ class BookDecorator < Draper::Decorator
   end
 
   def dimensions
-    "H: #{object.height}\" x W: #{object.width}\" x D: #{object.depth}\""
+    I18n.t('book.dimensions_h_w_s', height: object.height, width: object.width, depth: object.depth)
   end
 
   def short_description
     object.description[0..VISIBLE_LENGTH_DESCRIPTION_BOOK]
   end
 
-  def big_description_length
+  def big_description_length?
     object.description.length > VISIBLE_LENGTH_DESCRIPTION_BOOK
   end
 
-  def price_to_euro
-    number_to_currency(object.price, unit: '€')
+  def price_to_currency
+    number_to_currency(object.price, unit: I18n.t('catalog.currency'))
   end
 end

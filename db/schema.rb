@@ -15,28 +15,28 @@ ActiveRecord::Schema.define(version: 2021_04_23_221244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "author_books", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_author_books_on_author_id"
+    t.index ["book_id"], name: "index_author_books_on_book_id"
+  end
+
   create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.text "biography"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "authorships", force: :cascade do |t|
-    t.bigint "author_id", null: false
-    t.bigint "book_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_authorships_on_author_id"
-    t.index ["book_id"], name: "index_authorships_on_book_id"
-  end
-
   create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "year"
-    t.integer "quantity"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "year", default: 1980
+    t.integer "quantity", default: 0
     t.decimal "price", precision: 5, scale: 2
     t.decimal "height", precision: 4, scale: 2
     t.decimal "width", precision: 4, scale: 2
@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(version: 2021_04_23_221244) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "books_count"
   end
 
-  add_foreign_key "authorships", "authors"
-  add_foreign_key "authorships", "books"
+  add_foreign_key "author_books", "authors"
+  add_foreign_key "author_books", "books"
   add_foreign_key "books", "categories"
 end

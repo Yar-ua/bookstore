@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  console.log(gon.bookQuantity)
+  
   $('#btn_read_more').click(function () {
     $('#dots').hide();
     $('#more_text').css('display', 'inline');
@@ -17,7 +19,7 @@ $(document).ready(function(){
   
   $('#minus').click(function(e){
     var current_value = $('.input-count-book').val();
-    if (current_value >= 2) {
+    if (current_value > 1) {
       var new_value = Number(current_value) - 1;
       $('.input-count-book').val(new_value);
     }
@@ -25,7 +27,7 @@ $(document).ready(function(){
 
   $('#plus').click(function(e){
     var current_value = $('.input-count-book').val();
-    if (current_value < 10) {
+    if (current_value < gon.bookQuantity) {
       var new_value = Number(current_value) + 1;
       $('.input-count-book').val(new_value);
     }

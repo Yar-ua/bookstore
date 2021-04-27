@@ -9,6 +9,6 @@ RSpec.describe 'Pages#index page', type: :feature do
 
   it 'go to catalog page' do
     click_on('Get Started')
-    expect(page).to have_current_path catalog_path
+    expect(page).to have_current_path books_path
   end
 end

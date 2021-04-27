@@ -1,7 +1,5 @@
-require 'rails_helper'
-
 RSpec.describe BooksController do
-  let(:book) { FactoryBot.create(:book, category_id: FactoryBot.create(:category, name: 'Photo').id) }
+  let(:book) { create(:book) }
 
   describe 'GET /index' do
     it 'returns http success' do

@@ -1,5 +1,5 @@
 .col-xs-12.col-md-4
-  %p.h1.in-gold-500.mt-10= @book.price_to_euro
+  %p.h1.in-gold-500.mt-10= @book.price_to_currency
 .col-xs-5.col-md-3
   .input-group.general-position
     %a.input-link.b-n.pt-7#minus
@@ -8,4 +8,4 @@
     %a.b-n.input-link#plus
       %i.fa.fa-plus.line-height-40
 .col-xs-7.col-md-5
-  %button.btn.btn-default.pull-right.general-position= t('book_page.add_to_card')
+  %button.btn.btn-default.pull-right.general-position= t('book.add_to_card')
