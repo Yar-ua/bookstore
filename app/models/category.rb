@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :name, length: {
     maximum: 50,
-    wrong_length: 'Invalid length',
-    too_long: '%<count> characters is the maximum allowed'
+    wrong_length: I18n.t('validation.wrong_length'),
+    too_long: I18n.t('validation.too_long', count: %(count))
   }
 end

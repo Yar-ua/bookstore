@@ -1,18 +1,14 @@
 require 'ffaker'
 
-FactoryBot.create(:category, name: 'Mobile Development')
-FactoryBot.create(:category, name: 'Photo')
-FactoryBot.create(:category, name: 'Web Design')
-FactoryBot.create(:category, name: 'Web Development')
-
-40.times { FactoryBot.create(:author) }
-
-100.times do
-  FactoryBot.create(:book, category_id: Category.all.sample.id)
+CATEGORIES.each do |category|
+  FactoryBot.create(:category, name: category)
 end
+
+FactoryBot.create_list(:author, 40)
+100.times { FactoryBot.create(:book, category_id: Category.all.sample.id) }
 
 Book.all.each do |book|
   3.times do
-    Authorship.create!(author_id: Author.all.sample.id, book_id: book.id)
+    AuthorBook.create!(author_id: Author.all.sample.id, book_id: book.id)
   end
 end

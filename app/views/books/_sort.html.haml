@@ -6,4 +6,4 @@
     %ul.dropdown-menu
       - @sort_list.each do |key, values|
         %li
-          = link_to values[:title], catalog_path(sort_params(key, @current_category.id)), class: "filter-link sort"
+          = link_to values[:title], books_path(sort_params(key, @current_category.id)), class: "filter-link sort"

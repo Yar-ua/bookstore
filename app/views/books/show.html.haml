@@ -27,12 +27,12 @@
         %p.lead.small.line-height-2
           %span#short_text
             = @book.short_description
-          - if @book.big_description_length
+          - if @book.big_description_length?
             %span#dots= t('books.dots')
             %span#more_text.d-n
               = @book.description
-            %a.b-n.in-gold-500.ml-10#btn_read_more= t('book_page.read_more')
-            %a.b-n.in-gold-500.ml-10#hide_read_more.d-n= t('book_page.hide_read_more')
+            %a.b-n.in-gold-500.ml-10#btn_read_more= t('book.read_more')
+            %a.b-n.in-gold-500.ml-10#hide_read_more.d-n= t('book.hide_read_more')
         
       .general-info-wrap.divider-lg
         .clearfix

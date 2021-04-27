@@ -10,6 +10,6 @@ FactoryBot.define do
     height { rand(6.4..10.0).round(1) }
     width { rand(4.4..8.0).round(1) }
     depth { rand(0.5..2.0).round(1) }
-    materials { %w[papers silk].sample }
+    materials { Book::MATERIALS.sample }
   end
 end
