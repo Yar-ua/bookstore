@@ -1,7 +1,7 @@
-class AuthorDecorator < ApplicationDecorator
+class AuthorDecorator < Draper::Decorator
   delegate_all
 
-  def sss
-    object.authors.map { |author| "#{author.first_name} #{author.last_name}" }.join(', ')
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
