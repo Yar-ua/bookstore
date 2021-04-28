@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
   include Pagy::Backend
-  require_relative '../queries/books_query'
-  require_relative '../queries/sort_query'
 
   before_action :set_categories, only: %i[index show]
   before_action :set_sort_data, only: :index
