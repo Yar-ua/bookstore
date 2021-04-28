@@ -1,4 +1,4 @@
-RSpec.describe 'Pages#index page', type: :feature do
+RSpec.describe 'Pages#index page' do
   before do
     visit(root_path)
   end

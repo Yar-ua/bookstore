@@ -1,11 +1,12 @@
-class BookDecorator < ApplicationDecorator
+class BookDecorator < Draper::Decorator
   include ActionView::Helpers::NumberHelper
   delegate_all
+  decorates_association :authors
 
   VISIBLE_LENGTH_DESCRIPTION_BOOK = 250
 
   def book_authors
-    object.authors.map { |author| "#{author.first_name} #{author.last_name}" }.join(', ')
+    authors.map(&:full_name).join(', ')
   end
 
   def dimensions
