@@ -10,7 +10,7 @@ module Bookstore
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.autoload_paths << Rails.root.join('app', 'queries')
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'en', '*.{rb,yml}')]
     config.i18n.default_locale = :en
 
