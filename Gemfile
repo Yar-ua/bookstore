@@ -17,6 +17,8 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'webpacker', '~> 5.0'
+gem 'devise'
+gem 'gon', '~>6.4'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -24,6 +26,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop-rails', '~>2.9', require: false
   gem 'rubocop-rspec', '~>2.2', require: false
+  gem 'httplog'
 end
 
 group :development do
@@ -41,5 +44,3 @@ group :test do
   gem 'simplecov', '~>0.21', require: false
   gem 'webdrivers', '~>4.6'
 end
-
-gem 'gon', '~>6.4'
