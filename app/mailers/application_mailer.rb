@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'ebaseapp.my@gmail.com' # ebaseapplication111
   layout 'mailer'
 end
