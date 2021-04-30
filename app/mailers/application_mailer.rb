@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'ebaseapp.my@gmail.com' # ebaseapplication111
+  default from: Rails.application.credentials.dig(:action_mailer, :user),
   layout 'mailer'
 end

@@ -6,7 +6,6 @@ RSpec.describe 'Current book page' do
   let(:dimensions) { "H: #{book.height}\" x W: #{book.width}\" x D: #{book.depth}\"" }
 
   before do
-    # visit books_path
     visit book_path(book)
   end
 

@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
   include Pagy::Backend
   before_action :authenticate_user!
-  # before_action :set_categories, only: %i[index show]
   before_action :set_sort_data, only: :index
 
   def index
@@ -23,10 +22,6 @@ class BooksController < ApplicationController
   def sort_params
     params.permit(:category_id, :sort)
   end
-
-  # def set_categories
-  #   @categories = Category.order(:name)
-  # end
 
   def set_sort_data
     @sort_list = BooksQuery::SORT_OPTIONS
