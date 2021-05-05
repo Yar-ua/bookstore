@@ -1,0 +1,11 @@
+en:
+  mailer:
+    welcome: Welcome %{email}!
+    hello: Hello %{email}
+    confirm_text: You can confirm your account email through the link below:"
+    email_change_notify: We're contacting you to notify you that your email is being changed to %{email}.
+    password_change_notify: We're contacting you to notify you that your password has been changed.
+    password_change_request: Someone has requested a link to change your password. You can do this through the link below.
+    change_my_password: Change my password
+    didnt_request: If you didn't request this, please ignore this email. 
+                   Your password won't change until you access the link above and create a new one.

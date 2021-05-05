@@ -24,7 +24,7 @@
               = render 'books/categories', cached: true
               %li.divider{role: "separator"}
               %li
-                %a{href: "#"}= t('header.logout')
+                = link_to t('header.logout'), destroy_user_session_path, method: :delete
           %li
             %a{href: "#"}= t('header.account')
       .hidden-xs
@@ -37,6 +37,6 @@
               = render 'books/categories', cached: true
               %li.divider{role: "separator"}
               %li
-                %a{href: "#"}= t('header.logout')
+                = link_to t('header.logout'), destroy_user_session_path, method: :delete
           %li
             %a{href: "#"}= t('header.account')

@@ -19,6 +19,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'webpacker', '~> 5.0'
 gem 'devise'
 gem 'gon', '~>6.4'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
