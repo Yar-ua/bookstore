@@ -139,9 +139,6 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    httplog (1.4.3)
-      rack (>= 1.0)
-      rainbow (>= 2.0.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -361,7 +358,6 @@ DEPENDENCIES
   ffaker (~> 2.18)
   gon (~> 6.4)
   haml-rails (~> 2.0)
-  httplog
   jbuilder (~> 2.7)
   listen (~> 3.3)
   omniauth-facebook

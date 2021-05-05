@@ -1,7 +1,6 @@
 # Configure HttpLog to capture the detail we want to know.
 
 HttpLog.configure do |config|
-
   # Enable or disable all logging
   config.enabled = true
 
