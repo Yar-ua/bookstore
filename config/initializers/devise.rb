@@ -276,7 +276,11 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, 'APP_ID', 'APP_SECRET'
   config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :APP_ID),
-                  Rails.application.credentials.dig(:facebook, :APP_SECRET), token_params: { parse: :json }
+                  Rails.application.credentials.dig(:facebook, :APP_SECRET), # scope: 'public_profile.email'
+                  scope: 'email',
+                  info_fields: 'email, first_name, last_name',
+                  image_size: 'large', # 50x50, guaranteed ratio
+                  secure_image_url: true
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

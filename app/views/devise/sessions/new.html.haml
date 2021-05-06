@@ -1,18 +1,17 @@
 %main.container.general-main-wrap
   .text-center
     %h3.general-login-title= t('session.login')
-    %a.general-login-icon{href: user_facebook_omniauth_authorize_path}
-      %i.fa.fa-facebook-official
+    - if devise_mapping.omniauthable?
+      = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
+        %i.fa.fa-facebook-official
     %p.general-login-text= t('session.or')
   %div.general-form
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = simple_form_for(resource, as: resource_name, validate: true, url: session_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.mb-30
-        %label.control-label.input-label{for: "email"}= t('session.enter_email')
-        = f.email_field :email, autofocus: true, id: 'email', class: 'form-control', placeholder: t('session.enter_email')
+        = f.input :email, label: t('session.enter_email'), validate: true
       .form-group.mb-30
-        %label.control-label.input-label{for: "password"}= t('session.password')
-        = f.password_field :password, id: 'password', class: 'form-control', placeholder: t('session.password')
+        = f.input :password, label: t('session.password'), id: 'password', class: 'form-control', placeholder: t('session.password')
         = link_to t('session.forgot_password'), new_password_path(resource_name), class: 'help-block in-gold-500'
       .form-group.checkbox.text-center.mb-30
         %label.checkbox-label

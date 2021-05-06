@@ -4,9 +4,9 @@
     %p.general-password-text= t('session.email_instruction') 
   %div.general-form
     = render "devise/shared/error_messages", resource: resource
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), validate: true, html: { method: :post }) do |f|
       .form-group.mb-25
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t('session.enter_email'), class: 'form-control'
+        = f.input :email, autofocus: true, autocomplete: "email", validate: true, placeholder: t('session.enter_email'), class: 'form-control'
       .text-center
         %button.btn.btn-default.mb-20
           = submit_tag t('session.send'), class: 'btn-submit-login-sign-up btn-default'
