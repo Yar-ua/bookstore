@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   include Pagy::Backend
-  before_action :authenticate_user!
   before_action :set_sort_data, only: :index
 
   def index

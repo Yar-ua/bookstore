@@ -17,7 +17,7 @@
       .text-center
       .form-group.checkbox.text-center.mb-30
         %button.btn.btn-default.mb-20
-          = submit_tag t('session.signup'), class: 'btn-submit-login-sign-up btn-default'
+          = submit_tag t('session.signup'), class: 'btn-submit-login-sign-up btn-default', id: 'signup'
     %p.general-sign-text.text-center
       = t('session.have_account')
       = link_to t('session.login'), new_session_path(resource_name), class: 'in-gold-500'
