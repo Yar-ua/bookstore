@@ -65,15 +65,24 @@ Rails.application.configure do
   # Configure ActionMailer
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'https://yar-bstore.herokuapp.com/' }
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: 'smtp.gmail.com',
+  #   port: 587,
+  #   domain: 'gmail.com',
+  #   user_name: Rails.application.credentials.dig(:action_mailer, :user),
+  #   password: Rails.application.credentials.dig(:action_mailer, :password),
+  #   authentication: 'plain',
+  #   enable_starttls_auto: true
+  # }
+  
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.sendgrid.net',
     port: 587,
-    domain: 'gmail.com',
-    user_name: Rails.application.credentials.dig(:action_mailer, :user),
-    password: Rails.application.credentials.dig(:action_mailer, :password),
-    authentication: 'plain',
+    domain: 'yar-bstore.herokuapp.com/',
+    user_name: 'apikey',
+    password: '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',
+    authentication: :login,
     enable_starttls_auto: true
   }
 
