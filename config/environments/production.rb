@@ -78,7 +78,7 @@ Rails.application.configure do
   
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
-    port: 587,
+    port: 465,
     domain: 'yar-bstore.herokuapp.com/',
     user_name: 'apikey',
     password: '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',
