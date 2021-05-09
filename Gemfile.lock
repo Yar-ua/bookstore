@@ -376,9 +376,9 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
-  client_side_validations
-  client_side_validations-simple_form
-  devise
+  client_side_validations (~> 18.0)
+  client_side_validations-simple_form (~> 13.0)
+  devise (~> 4.8)
   draper (~> 4.0)
   factory_bot_rails (~> 6.1)
   ffaker (~> 2.18)
@@ -386,22 +386,22 @@ DEPENDENCIES
   haml-rails (~> 2.0)
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  omniauth-facebook
-  omniauth-rails_csrf_protection
+  omniauth-facebook (~> 8.0)
+  omniauth-rails_csrf_protection (~> 1.0)
   pagy (~> 3.12)
   pg (~> 1.1)
   pry (~> 0.14)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3)
-  rails-controller-testing
+  rails-controller-testing (~> 1.0)
   rspec-rails (~> 5.0.0)
   rubocop-rails (~> 2.9)
   rubocop-rspec (~> 2.2)
   sass-rails (>= 6)
   selenium-webdriver (~> 3.142)
   shoulda-matchers (~> 4.0)
-  simple_form
+  simple_form (~> 5.1)
   simplecov (~> 0.21)
   spring (~> 2.1)
   turbolinks (~> 5)
