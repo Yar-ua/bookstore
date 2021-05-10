@@ -11,8 +11,10 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
-    user ||= User.create!(provider: auth.provider, uid: auth.uid,
+    return user if user
+    user = User.new(provider: auth.provider, uid: auth.uid,
                           email: auth.info.email, password: Devise.friendly_token[0, 20])
+    user.skip_confirmation!
     user
   end
 end
