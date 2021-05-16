@@ -1,4 +1,3 @@
-require 'pry'
 RSpec.describe 'Current book page' do
   let(:author) { create(:author) }
   let(:book) { create(:book) }
