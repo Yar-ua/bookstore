@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   BOOKS_IN_GROUP = 4
-  MATERIALS = %w[papers silk carboard].freeze
+  enum material: %i[papers silk carboard]
 
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books, dependent: :destroy
