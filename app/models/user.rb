@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :confirmable, :trackable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  has_many :addresses, dependent: :destroy
+
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :password, presence: true, length: { in: 6..20 }
 

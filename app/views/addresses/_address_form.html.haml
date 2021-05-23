@@ -1,0 +1,13 @@
+= simple_form_for @address, url: settings_path, method: :post do |f|
+  .form-group
+    = f.hidden_field :address_type, value: address_type
+    = f.input :first_name, label: "First Name", autofocus: true, class: 'form-control', placeholder: "Please enter your first name", validate: true
+    = f.input :last_name, label: "Last Name", class: 'form-control', placeholder: "Please enter your last name", validate: true
+    = f.input :address, label: "Address", class: 'form-control', placeholder: "Address", validate: true
+  .form-group
+    = f.input :city, label: "City", class: 'form-control', placeholder: "City", validate: true
+    = f.input :zip, label: "Zip", class: 'form-control', placeholder: "Zip", validate: true
+    = f.country_select :country, label: "Country", class: 'form-control', placeholder: "Select a country", validate: true
+    = f.input :phone, label: "Phone", class: 'form-control', placeholder: "Example +355 66 123 4567", validate: true
+  .text-center.general-text-align
+    = submit_tag 'Save', class: 'btn'
