@@ -13,7 +13,8 @@ en:
     year_of_publication: Year of publication
     materials: Materials
     dots: ...
-    dimensions_h_w_s: "H: %{height}\" x W: %{width}\" x D: %{depth}\""
+    dimensions_title: Dimensions
+    dimensions: "H: %{height}\" x W: %{width}\" x D: %{depth}\""
     read_more: read more
     hide_read_more: hide read more
     add_to_cart: Add to cart

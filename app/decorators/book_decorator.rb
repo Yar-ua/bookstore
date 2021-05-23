@@ -10,11 +10,15 @@ class BookDecorator < Draper::Decorator
   end
 
   def dimensions
-    I18n.t('book.dimensions_h_w_s', height: object.height, width: object.width, depth: object.depth)
+    I18n.t('book.dimensions', height: object.height, width: object.width, depth: object.depth)
   end
 
   def short_description
     object.description[0..VISIBLE_LENGTH_DESCRIPTION_BOOK]
+  end
+
+  def short_description_with_dots
+    short_description + I18n.t('book.dots')
   end
 
   def big_description_length?
