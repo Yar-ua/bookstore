@@ -1,0 +1,4 @@
+en:
+  validation:
+    wrong_length: Invalid length
+    too_long: '%{count} characters is the maximum allowed'

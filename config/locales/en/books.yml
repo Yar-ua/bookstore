@@ -1,0 +1,20 @@
+en:
+  categories:
+    all: All
+
+  catalog:
+    catalog: Catalog
+    currency: €
+  
+  book:
+    back_to_results: Back to results
+    dimensions: Dimensions
+    description: Description
+    year_of_publication: Year of publication
+    materials: Materials
+    dots: ...
+    dimensions_title: Dimensions
+    dimensions: "H: %{height}\" x W: %{width}\" x D: %{depth}\""
+    read_more: read more
+    hide_read_more: hide read more
+    add_to_cart: Add to cart

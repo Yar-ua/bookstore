@@ -21,3 +21,5 @@ RSpec/ExpectActual:
   Enabled: false
 Style/GlobalStdStream:
   Enabled: false
+RSpec/DescribeClass:
+  Enabled: false

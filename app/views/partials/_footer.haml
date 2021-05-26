@@ -4,16 +4,16 @@
       .col-sm-9
         %ul.list-inline.general-align.mb-25
           %li
-            %a.nav-link{href: "#"} Home
+            = link_to t('header.home'), root_path, class: "nav-link"
           %li
-            %a.nav-link{href: "#"} Shop
+            = link_to t('header.shop'), books_path, class: "nav-link"
           %li
-            %a.nav-link{href: "#"} Orders
+            %a.nav-link{href: "#"}= t('header.orders')
           %li
-            %a.nav-link{href: "#"} Settings
+            %a.nav-link{href: "#"}= t('header.settings')
       .col-sm-3
-        %p.general-nav-mail support@bookstore.com
-        %p.general-nav-number (555)-555-5555
+        %p.general-nav-mail= t('footer.support_email') 
+        %p.general-nav-number= t('footer.support_phone') 
         %ul.list-inline.general-align
           %li
             %a.nav-link{href: "#"}
@@ -27,4 +27,3 @@
           %li
             %a.nav-link{href: "#"}
               %i.fa.fa-instagram{'aria-hidden': "true"}
-%script{src: "https://use.fontawesome.com/67602d7308.js"}

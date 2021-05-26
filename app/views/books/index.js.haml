@@ -1,0 +1,3 @@
+:plain
+  $('#books').append("#{escape_javascript(render 'books')}");
+  $('#paginator').html("#{escape_javascript( render 'pagination', pagy: @pagy )}");
