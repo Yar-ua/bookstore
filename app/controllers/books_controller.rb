@@ -27,6 +27,6 @@ class BooksController < ApplicationController
     @current_sort = SortQuery.new(sort_params).call
     return @current_category = Category.find(params[:category_id]) if params[:category_id]
 
-    @current_category = Category.new(id: nil, name: 'All')
+    @current_category = Category.new(id: nil, name: I18n.t('categories.all'))
   end
 end
