@@ -9,7 +9,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.decimal :height, precision: 4, scale: 2
       t.decimal :width, precision: 4, scale: 2
       t.decimal :depth, precision: 4, scale: 2
-      t.string :materials
+      t.integer :material
 
       t.timestamps
       
