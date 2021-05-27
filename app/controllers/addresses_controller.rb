@@ -2,7 +2,6 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!
   
   def create
-    # current_user.lots.build(lot_params)
     @address = current_user.addresses.build(address_params)
     puts @address.inspect
     @address.save

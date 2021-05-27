@@ -1,5 +1,5 @@
 -# = simple_form_for "@#{address_type}_address", url: addresses_path, html: { method: :post } do |f|
-= simple_form_for address_form, as: "#{address_type}_address", url: addresses_path, html: { method: :post } do |f|
+= simple_form_for address_form, as: :address, url: addresses_path, html: { method: :post } do |f|
   .form-group
     = address_type
     = "#{address_type}_address".inspect
