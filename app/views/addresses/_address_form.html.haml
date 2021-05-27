@@ -1,13 +1,18 @@
-= simple_form_for @address, url: settings_path, method: :post do |f|
+-# = simple_form_for "@#{address_type}_address", url: addresses_path, html: { method: :post } do |f|
+= simple_form_for address_form, as: "#{address_type}_address", url: addresses_path, html: { method: :post } do |f|
   .form-group
-    = f.hidden_field :address_type, value: address_type
-    = f.input :first_name, label: "First Name", autofocus: true, class: 'form-control', placeholder: "Please enter your first name", validate: true
-    = f.input :last_name, label: "Last Name", class: 'form-control', placeholder: "Please enter your last name", validate: true
-    = f.input :address, label: "Address", class: 'form-control', placeholder: "Address", validate: true
+    = address_type
+    = "#{address_type}_address".inspect
+    = @billing_address.inspect
+    = f.input :address_type, input_html: { value: address_type, type: 'hidden' }
+    = f.input :first_name, label: "First Name", autofocus: true, validate: true, class: 'form-control', placeholder: "Please enter your first name" #, input_html: { value: address.first_name }
+    = f.input :last_name, label: "Last Name", validate: true, class: 'form-control', placeholder: "Please enter your last name"
+    = f.input :address, label: "Address", validate: true, class: 'form-control', placeholder: "Address"
   .form-group
-    = f.input :city, label: "City", class: 'form-control', placeholder: "City", validate: true
-    = f.input :zip, label: "Zip", class: 'form-control', placeholder: "Zip", validate: true
-    = f.country_select :country, label: "Country", class: 'form-control', placeholder: "Select a country", validate: true
-    = f.input :phone, label: "Phone", class: 'form-control', placeholder: "Example +355 66 123 4567", validate: true
+    = f.input :city, label: "City", validate: true, class: 'form-control', placeholder: "City"
+    = f.input :zip, label: "Zip", validate: true, class: 'form-control', placeholder: "Zip"
+    = f.country_select :country, label: "Country", validate: true, class: 'form-control', placeholder: "Select a country"
+    = f.input :phone, label: "Phone", validate: true, class: 'form-control', placeholder: "Example +355 66 123 4567"
   .text-center.general-text-align
     = submit_tag 'Save', class: 'btn'
+
