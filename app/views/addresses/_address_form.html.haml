@@ -1,11 +1,7 @@
--# = simple_form_for "@#{address_type}_address", url: addresses_path, html: { method: :post } do |f|
-= simple_form_for address_form, as: :address, url: addresses_path, html: { method: :post } do |f|
+= simple_form_for address_form, as: :address, url: addresses_path, validate: true, html: { method: :post } do |f|
   .form-group
-    = address_type
-    = "#{address_type}_address".inspect
-    = @billing_address.inspect
     = f.input :address_type, input_html: { value: address_type, type: 'hidden' }
-    = f.input :first_name, label: "First Name", autofocus: true, validate: true, class: 'form-control', placeholder: "Please enter your first name" #, input_html: { value: address.first_name }
+    = f.input :first_name, label: "First Name", autofocus: true, validate: true, class: 'form-control', placeholder: "Please enter your first name"
     = f.input :last_name, label: "Last Name", validate: true, class: 'form-control', placeholder: "Please enter your last name"
     = f.input :address, label: "Address", validate: true, class: 'form-control', placeholder: "Address"
   .form-group
@@ -15,4 +11,3 @@
     = f.input :phone, label: "Phone", validate: true, class: 'form-control', placeholder: "Example +355 66 123 4567"
   .text-center.general-text-align
     = submit_tag 'Save', class: 'btn'
-

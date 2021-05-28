@@ -4,7 +4,6 @@ class SettingsController < ApplicationController
   before_action :set_address
   
   def new
-    @billing_address = get_address_by_type(:billing)
   end
   
   private
