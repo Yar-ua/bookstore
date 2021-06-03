@@ -1,0 +1,18 @@
+en:
+  settings: 
+    settings: Settings
+    address: Address
+    privacy: Privacy
+    billing_address: Billing Address
+    shipping_address: Shipping Address
+    email: Email
+    enter_email: Enter Email
+    password: Password
+    old_password: Old Password
+    new_password: New Password
+    confirm_password: Confirm Password
+    remove_account: Remove Account
+    please_remove: Please remove my account
+    sure: Are you sure?
+    understand: I understand that all data will be lost
+    
