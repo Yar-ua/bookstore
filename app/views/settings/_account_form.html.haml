@@ -21,7 +21,7 @@
     %p.in-gold-500.font-18.mb-25= I18n.t('settings.remove_account')
     = simple_form_for current_user, as: :user, url: account_path(current_user), html: { method: :delete } do
       .general-settings-btn
-        = submit_tag t('settings.please_remove'), class: 'btn mb-20 submit-drop-account', id: 'confirmButton', data: { confirm: I18n.t('settings.sure') }
+        = submit_tag t('settings.please_remove'), class: 'btn mb-20 submit-drop-account', id: 'confirmButton', disabled: true, data: { confirm: I18n.t('settings.sure') }
       .form-group.checkbox.general-settings-checkbox
         %label.checkbox-label
           %input.checkbox-input.checkbox-delete-account{type: "checkbox", hidden: "true", class: 'drop-account-checkbox', onchange: "document.getElementById('confirmButton').disabled = !this.checked;"}

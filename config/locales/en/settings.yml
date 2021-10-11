@@ -12,7 +12,11 @@ en:
     new_password: New Password
     confirm_password: Confirm Password
     remove_account: Remove Account
+    address_was_changed: Address was successfully changed
+    email_changed: Email was successfully changed
+    error: Data wasn't saved, somethng wrong
     please_remove: Please remove my account
     sure: Are you sure?
     understand: I understand that all data will be lost
-    
+    changed_password: Password was changed successfully
+    wrong_password: Password wasn't changed, maybe you wrote wrong old password

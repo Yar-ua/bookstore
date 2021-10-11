@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    create_or_update(address_params)
+    flash[:success] = I18n.t('settings.address_was_changed') if create_or_update(address_params)
     redirect_to new_setting_path
   end
 

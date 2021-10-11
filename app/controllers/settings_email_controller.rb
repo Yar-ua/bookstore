@@ -3,7 +3,11 @@ class SettingsEmailController < ApplicationController
   
   def update
     skip_user_checks!
-    current_user.update_without_password(params.require(:user).permit(:email))
+    if current_user.update_without_password(params.require(:user).permit(:email))
+      flash[:success] = I18n.t('settings.email_changed')
+    else
+      flash[:error] = I18n.t('settings.error')
+    end
     redirect_to new_setting_path
   end
   
