@@ -20,3 +20,5 @@ en:
     understand: I understand that all data will be lost
     changed_password: Password was changed successfully
     wrong_password: Password wasn't changed, maybe you wrote wrong old password
+    save_email: Save email
+    save_password: Save password

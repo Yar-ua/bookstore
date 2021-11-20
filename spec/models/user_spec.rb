@@ -27,4 +27,8 @@ RSpec.describe User do
       expect(described_class.where(uid: auth.uid)[0].email).to eq(auth.info.email)
     end
   end
+  
+  describe 'with assosiations' do
+    it { is_expected.to have_many(:addresses).dependent(:destroy) }
+  end
 end

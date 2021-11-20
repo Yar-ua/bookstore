@@ -33,11 +33,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop-rails', '~>2.9', require: false
   gem 'rubocop-rspec', '~>2.2', require: false
+  gem 'pry', '~> 0.14'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
-  gem 'pry', '~> 0.14'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring', '~>2.1'
   gem 'web-console', '>= 4.1.0'

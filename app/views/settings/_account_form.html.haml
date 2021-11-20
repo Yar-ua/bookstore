@@ -5,7 +5,7 @@
       .form-group.mb-35
         = f.input :email, label: I18n.t('settings.enter_email'), autofocus: true, validate: true, class: 'form-control'
       .general-text-align
-        = submit_tag 'Save', class: 'btn'
+        = submit_tag I18n.t('settings.save_email'), class: 'btn'
   .col-sm-5.col-sm-offset-1
     %p.in-gold-500.font-18.mb-25= I18n.t('settings.password')
     = simple_form_for current_user, as: :user, url: account_path(current_user), validate: true, html: { method: :put } do |f|
@@ -16,12 +16,12 @@
       .form-group.mb-40
         = f.input :confirm_password, label: I18n.t('settings.confirm_password'), validate: true, class: "control-label input-label", placeholder: I18n.t('settings.confirm_password')
       .general-text-align
-        = submit_tag 'Save', class: 'btn'
+        = submit_tag I18n.t('settings.save_password'), class: 'btn'
   .col-sm-12
     %p.in-gold-500.font-18.mb-25= I18n.t('settings.remove_account')
     = simple_form_for current_user, as: :user, url: account_path(current_user), html: { method: :delete } do
       .general-settings-btn
-        = submit_tag t('settings.please_remove'), class: 'btn mb-20 submit-drop-account', id: 'confirmButton', disabled: true, data: { confirm: I18n.t('settings.sure') }
+        = submit_tag I18n.t('settings.please_remove'), class: 'btn mb-20 submit-drop-account', id: 'confirmButton', disabled: true, data: { confirm: I18n.t('settings.sure') }
       .form-group.checkbox.general-settings-checkbox
         %label.checkbox-label
           %input.checkbox-input.checkbox-delete-account{type: "checkbox", hidden: "true", class: 'drop-account-checkbox', onchange: "document.getElementById('confirmButton').disabled = !this.checked;"}
