@@ -22,3 +22,4 @@ en:
     wrong_password: Password wasn't changed, maybe you wrote wrong old password
     save_email: Save email
     save_password: Save password
+    deleted_account: Account was successfully deleted
