@@ -15,7 +15,7 @@ RSpec.describe 'Current user profile email and password settings page' do
     expect(page).to have_content(user.email)
   end
   
-  context 'privacy partial' do
+  context 'privacy page' do
     let(:new_test_email) { attributes_for(:user)[:email] }
     let(:error_message) { I18n.t('settings.error') }
     let(:success_message_email) { I18n.t('settings.email_changed') }

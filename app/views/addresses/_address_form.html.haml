@@ -8,6 +8,6 @@
     = f.input :city, label: "City", validate: true, class: 'form-control', placeholder: "City"
     = f.input :zip, label: "Zip", validate: true, class: 'form-control', placeholder: "Zip"
     = f.country_select :country, label: "Country", validate: true, class: 'form-control', placeholder: "Select a country"
-    = f.input :phone, label: "Phone", validate: true, class: 'form-control', placeholder: "Example +355 66 123 4567"
+    = f.input :phone, label: "Phone", validate: true, class: 'form-control', placeholder: "Example +8055 123 45 67"
   .text-center.general-text-align
-    = submit_tag 'Save', class: 'btn'
+    = submit_tag "Save #{address_type}", class: 'btn'
