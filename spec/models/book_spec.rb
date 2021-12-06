@@ -1,14 +1,14 @@
 RSpec.describe Book do
-  let(:author) { create(:book) }
+  let(:book) { create(:book) }
 
   describe 'validation' do
-    it { expect(author).to validate_presence_of(:title) }
-    it { expect(author).to validate_presence_of(:price) }
-    it { expect(author).to validate_numericality_of(:price) }
-    it { expect(author).to validate_numericality_of(:quantity) }
-    it { expect(author).to validate_numericality_of(:height) }
-    it { expect(author).to validate_numericality_of(:width) }
-    it { expect(author).to validate_numericality_of(:depth) }
+    it { expect(book).to validate_presence_of(:title) }
+    it { expect(book).to validate_presence_of(:price) }
+    it { expect(book).to validate_numericality_of(:price) }
+    it { expect(book).to validate_numericality_of(:quantity) }
+    it { expect(book).to validate_numericality_of(:height) }
+    it { expect(book).to validate_numericality_of(:width) }
+    it { expect(book).to validate_numericality_of(:depth) }
   end
 
   describe 'with assosiations' do

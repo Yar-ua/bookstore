@@ -3,9 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'bcrypt', '~>3.1'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'client_side_validations', '~>18.0'
 gem 'client_side_validations-simple_form', '~>13.0'
+gem 'country_select', '~> 4.0'
 gem 'devise', '~>4.8'
 gem 'draper', '~>4.0'
 gem 'factory_bot_rails', '~>6.1'
@@ -27,6 +29,7 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry', '~> 0.14'
   gem 'rails-controller-testing', '~>1.0'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop-rails', '~>2.9', require: false
@@ -35,7 +38,6 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
-  gem 'pry', '~> 0.14'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring', '~>2.1'
   gem 'web-console', '>= 4.1.0'

@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
   resources :books, only: %i[show index]
+  resources :settings, only: :new
+  resources :accounts, only: %i[update destroy]
+  resources :addresses, only: :create
+  resources :settings_email, only: :update
 end

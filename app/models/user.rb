@@ -6,8 +6,12 @@ class User < ApplicationRecord
          :confirmable, :trackable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  attr_accessor :skip_password_validation
+
+  has_many :addresses, dependent: :destroy
+
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
-  validates :password, presence: true, length: { in: 6..20 }
+  validates :password, presence: true, length: { in: 6..20 }, unless: :skip_password_validation
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first

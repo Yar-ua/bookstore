@@ -1,0 +1,13 @@
+= simple_form_for address_form, as: :"#{address_type}", url: addresses_path, validate: true, html: { method: :post } do |f|
+  .form-group
+    = f.input :address_type, input_html: { value: address_type, type: 'hidden' }
+    = f.input :first_name, label: "First Name", autofocus: true, class: 'form-control', placeholder: "Please enter your first name"
+    = f.input :last_name, label: "Last Name", validate: true, class: 'form-control', placeholder: "Please enter your last name"
+    = f.input :address, label: "Address", validate: true, class: 'form-control', placeholder: "Address"
+  .form-group
+    = f.input :city, label: "City", validate: true, class: 'form-control', placeholder: "City"
+    = f.input :zip, label: "Zip", validate: true, class: 'form-control', placeholder: "Zip"
+    = f.country_select :country, label: "Country", validate: true, class: 'form-control', placeholder: "Select a country"
+    = f.input :phone, label: "Phone", validate: true, class: 'form-control', placeholder: "Example +8055 123 45 67"
+  .text-center.general-text-align
+    = submit_tag "Save #{address_type}", class: 'btn', id: "save_#{address_type}_button"
