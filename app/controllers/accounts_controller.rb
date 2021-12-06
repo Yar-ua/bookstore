@@ -14,11 +14,7 @@ class AccountsController < ApplicationController
   
   
   def destroy
-    if current_user&.destroy
-      flash[:success] = I18n.t('controllers.deleted_account')
-    else
-      flash[:error] = I18n.t('controllers.error_deleted_account')
-    end
+    flash[:success] = I18n.t('settings.deleted_account') if current_user&.destroy
     redirect_to root_path
   end
 

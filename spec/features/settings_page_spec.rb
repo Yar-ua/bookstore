@@ -63,7 +63,7 @@ RSpec.describe 'Current user profile email and password settings page' do
   end
   
   context 'delete account' do
-    let(:successfuly_deleted_account_message) { I18n.t('controllers.deleted_account') }
+    let(:successfuly_deleted_account_message) { I18n.t('settings.deleted_account') }
 
     it 'when submit and delete account' do
       find('span', class: 'checkbox-icon').click
