@@ -9,6 +9,7 @@ RSpec.describe 'Current book page' do
   end
 
   it { expect(page).to have_content(book.description[0..BookDecorator::VISIBLE_LENGTH_DESCRIPTION_BOOK]) }
+  it { expect(page).to have_content(book.decorate.book_authors) }
   it { expect(page).to have_content(dimensions) }
   it { expect(page).to have_content(book.title) }
 

@@ -9,6 +9,8 @@ AllCops:
   - 'bin/**/*'
   - 'tmp/**/*'
   - 'db/**/*'
+  - 'config/initializers/**/*'
+  - 'config/environments/**/*'
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/Documentation:

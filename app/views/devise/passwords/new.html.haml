@@ -1,0 +1,14 @@
+%main.container.general-main-wrap
+  .text-center
+    %h1.mb-30= t('session.forgot_password')
+    %p.general-password-text= t('session.email_instruction') 
+  %div.general-form
+    = render "devise/shared/error_messages", resource: resource
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), validate: true, html: { method: :post }) do |f|
+      .form-group.mb-25
+        = f.input :email, autofocus: true, autocomplete: "email", validate: true, placeholder: t('session.enter_email'), class: 'form-control'
+      .text-center
+        %button.btn.btn-default.mb-20
+          = submit_tag t('session.send'), class: 'btn-submit-login-sign-up btn-default'
+      .text-center
+        %a.in-gold-500.mb-20{href: "/users/sign_in"}= t('session.cancel')
