@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable,
          :omniauthable, omniauth_providers: %i[facebook]
-  
+
   attr_accessor :skip_password_validation
 
   has_many :addresses, dependent: :destroy

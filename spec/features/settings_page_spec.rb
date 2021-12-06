@@ -1,7 +1,7 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 RSpec.describe 'Current user profile email and password settings page' do
+  include Warden::Test::Helpers
   let(:user) { create(:user) }
 
   before do
@@ -10,18 +10,16 @@ RSpec.describe 'Current user profile email and password settings page' do
     find('li', text: I18n.t('settings.privacy')).click
   end
 
-  it 'visit settings page' do
-    expect(page).to have_content(I18n.t('settings.settings'))
-    expect(page).to have_content(user.email)
-  end
-  
-  context 'privacy page' do
+  it { expect(page).to have_content(I18n.t('settings.settings')) }
+  it { expect(page).to have_content(user.email) }
+
+  context 'with privacy page' do
     let(:new_test_email) { attributes_for(:user)[:email] }
     let(:error_message) { I18n.t('settings.error') }
     let(:success_message_email) { I18n.t('settings.email_changed') }
-    
+
     it { expect(page).to have_content(I18n.t('settings.enter_email')) }
-    
+
     it 'when change on empty email' do
       fill_in 'user_email', with: ''
       click_on(I18n.t('settings.save_email'))
@@ -34,7 +32,7 @@ RSpec.describe 'Current user profile email and password settings page' do
       expect(page).to have_content success_message_email
     end
   end
-  
+
   context 'when change password' do
     let(:new_password) { '654321' }
     let(:error_message_password) { I18n.t('settings.wrong_password') }
@@ -53,7 +51,7 @@ RSpec.describe 'Current user profile email and password settings page' do
       expect(page).to have_content error_message_password
     end
 
-    it 'click on submit with all valid fields' do
+    it 'when click on submit with all valid fields' do
       fill_in 'user_old_password', with: user.password
       fill_in 'user_new_password', with: new_password
       fill_in 'user_confirm_password', with: new_password
@@ -61,8 +59,8 @@ RSpec.describe 'Current user profile email and password settings page' do
       expect(page).to have_content successfuly_update_password_messave
     end
   end
-  
-  context 'delete account' do
+
+  context 'when delete account' do
     let(:successfuly_deleted_account_message) { I18n.t('settings.deleted_account') }
 
     it 'when submit and delete account' do
@@ -71,5 +69,4 @@ RSpec.describe 'Current user profile email and password settings page' do
       expect(page).to have_content successfuly_deleted_account_message
     end
   end
-
 end
