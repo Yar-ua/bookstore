@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_03_24_152131) do
     t.decimal "height", precision: 4, scale: 2
     t.decimal "width", precision: 4, scale: 2
     t.decimal "depth", precision: 4, scale: 2
-    t.string "materials"
+    t.integer "material"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
