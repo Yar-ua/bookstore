@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Current user profile email and password settings page' do
-  include Warden::Test::Helpers
   let(:user) { create(:user) }
 
   before do
-    login_as user
+    login_as user, scope: :user
     visit new_setting_path
     find('li', text: I18n.t('settings.privacy')).click
   end

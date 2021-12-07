@@ -17,6 +17,8 @@ Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
+  Exclude:
+    - 'app/admin/books.rb'
 RSpec/FilePath:
   Enabled: false
 RSpec/ExpectActual:
@@ -24,4 +26,8 @@ RSpec/ExpectActual:
 Style/GlobalStdStream:
   Enabled: false
 RSpec/DescribeClass:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
   Enabled: false

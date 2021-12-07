@@ -1,4 +1,4 @@
-ActiveAdmin.register Author do  
+ActiveAdmin.register Author do
   index do
     selectable_column
     column :first_name
@@ -6,7 +6,7 @@ ActiveAdmin.register Author do
     column :biography
     actions
   end
-  
+
   form do |f|
     f.inputs :first_name, :last_name, :biography
     actions
