@@ -5,6 +5,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'ffaker'
 require 'support/factory_bot'
+require 'support/spec_loader'
+require 'devise'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -19,6 +21,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   # Capybara.default_driver = :selenium_chrome
 end
