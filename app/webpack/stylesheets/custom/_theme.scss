@@ -563,3 +563,10 @@
     }
   }
 }
+
+.form-group-invalid {
+  color: red;
+  .form-control {
+    box-shadow: 1px 1px 1px 1px red;
+  }
+}

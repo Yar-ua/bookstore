@@ -1,0 +1,8 @@
+%li.dropdown
+  %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= current_user.email
+  %ul.dropdown-menu
+    %li
+      %a{href: "#"}= t('header.settings')
+    %li.divider{role: "separator"}
+    %li
+      = link_to t('header.logout'), destroy_user_session_path, method: :delete

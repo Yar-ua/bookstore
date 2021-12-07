@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log(gon.bookQuantity)
   
   $('#btn_read_more').click(function () {
     $('#dots').hide();

@@ -1,0 +1,28 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title= t('session.login')
+    - if devise_mapping.omniauthable?
+      = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
+        %i.fa.fa-facebook-official
+    %p.general-login-text= t('session.or')
+  %div.general-form
+    = simple_form_for(resource, as: resource_name, validate: true, url: session_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .form-group.mb-30
+        = f.input :email, label: t('session.enter_email'), validate: true
+      .form-group.mb-30
+        = f.input :password, label: t('session.password'), id: 'password', class: 'form-control', placeholder: t('session.password')
+        = link_to t('session.forgot_password'), new_password_path(resource_name), class: 'help-block in-gold-500'
+      .form-group.checkbox.text-center.mb-30
+        %label.checkbox-label
+          %input.checkbox-input{type: "checkbox", hidden: "true"}
+          %span.checkbox-icon
+            %i.fa.fa-check
+          - if devise_mapping.rememberable?
+            = f.label :remember_me, class: 'checkbox-text remember-me'
+      .text-center
+        %button.btn.btn-default.mb-20
+          = submit_tag t('session.login'), class: 'btn-submit-login-sign-up btn-default'
+  %p.general-sign-text.text-center
+    = t('session.dont_have_account')
+    = link_to t('session.signup'), new_registration_path(resource_name), class: 'in-gold-500'

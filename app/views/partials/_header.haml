@@ -22,11 +22,8 @@
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('header.shop')
             %ul.dropdown-menu
               = render 'books/categories', cached: true
-              %li.divider{role: "separator"}
-              %li
-                %a{href: "#"}= t('header.logout')
-          %li
-            %a{href: "#"}= t('header.account')
+          = render 'partials/account' if current_user
+          = render 'partials/login' unless current_user
       .hidden-xs
         %ul.nav.navbar-nav
           %li
@@ -35,8 +32,5 @@
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('header.shop')
             %ul.dropdown-menu
               = render 'books/categories', cached: true
-              %li.divider{role: "separator"}
-              %li
-                %a{href: "#"}= t('header.logout')
-          %li
-            %a{href: "#"}= t('header.account')
+          = render 'partials/account' if current_user
+          = render 'partials/login' unless current_user

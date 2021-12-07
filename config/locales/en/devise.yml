@@ -1,0 +1,21 @@
+en:
+  session:
+    login: Log In
+    enter_email: Enter email
+    or: or
+    password: Password
+    forgot_password: Forgot password?
+    confirm_password: Confirm password
+    set_new_password: Set new password
+    type_new_password: Type a new Password
+    confirm_password: Confirm password
+    send: Send
+    change: Change
+    remember_me: Remember me
+    back_to_store: Back to store
+    dont_have_account: Don't have account?
+    have_account: Already have account?
+    signup: Sign Up
+    confirm_password: Confirm password
+    cancel: Cancel
+    email_instruction: Send email instructions

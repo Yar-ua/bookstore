@@ -1,0 +1,5 @@
+%p= t('mailer.hello', email: @email)
+- if @resource.try(:unconfirmed_email?)
+  %p= t('mailer.email_change_notify', email: @resource.unconfirmed_email)
+- else
+  %p= t('mailer.email_change_notify', email: @resource.email)
