@@ -1,0 +1,9 @@
+= simple_form_for review, url: book_reviews_path(book_id: @book.id) do |f|
+  %h3= t('shared.write_review')
+  .mb-15
+    = f.input :score, label_html: { class: 'in-grey-600' },
+      input_html: { class: 'star-rating', min: Review::SCORE_RANGE.min, max: Review::SCORE_RANGE.max }
+    = f.input :title, label_html: { class: 'in-grey-600' }
+    = f.input :message, label_html: { class: 'in-grey-600' }
+  .text-right
+    = submit_tag t('shared.submit'), class: 'btn'

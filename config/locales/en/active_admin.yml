@@ -2,3 +2,12 @@ en:
   active_admin:
     books:
       dimensions: Book dimensions
+    scopes:
+      unprocessed: New
+      approved: Approved
+      rejected: Rejected
+    reviews:
+      successfully_approved: Review was approved!
+      successfully_rejected: Review was rejected!
+      approve: Approve
+      reject: Reject

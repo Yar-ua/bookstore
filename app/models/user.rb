@@ -9,6 +9,7 @@ class User < ApplicationRecord
   attr_accessor :skip_password_validation
 
   has_many :addresses, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :password, presence: true, length: { in: 6..20 }, unless: :skip_password_validation

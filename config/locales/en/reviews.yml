@@ -1,0 +1,8 @@
+en:
+  reviews:
+    create:
+      success: Thanks for Review. It will be published as soon as Admin will approve it.
+    status:
+      unprocessed: New
+      approved: Approved
+      rejected: Rejected

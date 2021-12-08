@@ -8,10 +8,15 @@ class Book < ApplicationRecord
 
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   belongs_to :category, counter_cache: true
 
   validates :title, :description, :height, :width, :depth, :category, :year, presence: true
   validates :height, :width, :depth, :price, :quantity,
             presence: true, numericality: { greater_than_or_equal_to: MIN_NUMBER }
+
+  def approved_reviews
+    reviews.approved
+  end
 end

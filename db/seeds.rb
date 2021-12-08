@@ -1,5 +1,7 @@
 require 'ffaker'
 
+users = FactoryBot.create_list(:user, 10)
+
 CATEGORIES.each do |category|
   FactoryBot.create(:category, name: category)
 end
@@ -11,6 +13,7 @@ Book.all.each do |book|
   3.times do
     AuthorBook.create!(author_id: Author.all.sample.id, book_id: book.id)
   end
+  FactoryBot.create_list(:review, rand(3..10), book: book, user: users.sample)
 end
 
 # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

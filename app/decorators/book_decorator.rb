@@ -2,6 +2,7 @@ class BookDecorator < Draper::Decorator
   include ActionView::Helpers::NumberHelper
   delegate_all
   decorates_association :authors
+  decorates_association :approved_reviews
 
   VISIBLE_LENGTH_DESCRIPTION_BOOK = 250
 

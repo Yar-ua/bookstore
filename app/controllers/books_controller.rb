@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id]).decorate
     gon.bookQuantity = @book.quantity
+    @review = Review.new(book: @book)
   end
 
   private
