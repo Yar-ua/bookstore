@@ -12,3 +12,6 @@ Book.all.each do |book|
     AuthorBook.create!(author_id: Author.all.sample.id, book_id: book.id)
   end
 end
+
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.first_or_create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
