@@ -16,11 +16,11 @@ RSpec.describe 'Admin Reviews', type: :feature do
       visit admin_reviews_path
     end
 
-    context 'contains expected content' do
+    context 'when contains expected content' do
       it { expect(page).to have_content(review.book.title) }
       it { expect(page).to have_content(review.title) }
       it { expect(page).to have_content(review.user.email) }
-      it { expect(page).to have_css('span', class: "status_tag") }
+      it { expect(page).to have_css('span', class: 'status_tag') }
     end
   end
 
@@ -29,10 +29,10 @@ RSpec.describe 'Admin Reviews', type: :feature do
       visit admin_reviews_path
       find_link(href: "/admin/reviews/#{review.id}").click
     end
-    
+
     it { expect(page).to have_current_path(admin_review_path(review)) }
 
-    context 'contains expected content' do
+    context 'when contains expected content' do
       it { expect(page).to have_content(review.title) }
       it { expect(page).to have_content(review.message) }
       it { expect(page).to have_content(review.user.email) }
@@ -48,16 +48,22 @@ RSpec.describe 'Admin Reviews', type: :feature do
       visit admin_review_path(review)
     end
 
-    it 'contains expected content' do
-      find_link('Approve', class: 'action-approve').click
-      expect(page).to have_text(I18n.t('active_admin.reviews.successfully_approved'))
-      expect(Review.find(review.id).status).to eq('approved')
+    describe 'contains approve content' do
+      before do
+        find_link('Approve', class: 'action-approve').click
+      end
+
+      it { expect(page).to have_text(I18n.t('active_admin.reviews.successfully_approved')) }
+      it { expect(Review.find(review.id).status).to eq('approved') }
     end
-    
-    it 'contains expected content' do
-      find_link('Reject', class: 'action-reject').click
-      expect(page).to have_text(I18n.t('active_admin.reviews.successfully_rejected'))
-      expect(Review.find(review.id).status).to eq('rejected')
+
+    describe 'contains reject content' do
+      before do
+        find_link('Reject', class: 'action-reject').click
+      end
+
+      it { expect(page).to have_text(I18n.t('active_admin.reviews.successfully_rejected')) }
+      it { expect(Review.find(review.id).status).to eq('rejected') }
     end
   end
 end

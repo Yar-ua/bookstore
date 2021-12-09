@@ -18,7 +18,7 @@ Style/Documentation:
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
   Exclude:
-    - 'app/admin/books.rb'
+    - 'app/admin/**/*'
 RSpec/FilePath:
   Enabled: false
 RSpec/ExpectActual:

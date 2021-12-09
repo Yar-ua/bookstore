@@ -2,11 +2,11 @@ class Review < ApplicationRecord
   SCORE_RANGE = (1..5).freeze
   MAX_TITLE_LENGTH = 50
   MAX_MESSAGE_LENGTH = 500
-  SENTENCE_REGEX =  %r{\A[\w\sа-я!#$%&'*+\-/=?^`{|}~.]*\z}i.freeze
-  
+  SENTENCE_REGEX = %r{\A[\w\sа-я!#$%&'*+\-/=?^`{|}~.]*\z}i.freeze
+
   default_scope -> { order(created_at: :desc) }
   enum status: { unprocessed: 0, approved: 1, rejected: 2 }
-  
+
   belongs_to :user
   belongs_to :book
 

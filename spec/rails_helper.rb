@@ -7,6 +7,7 @@ require 'ffaker'
 require 'support/factory_bot'
 require 'support/spec_loader'
 require 'devise'
+require 'selenium-webdriver'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

@@ -50,6 +50,6 @@ group :test do
   gem 'selenium-webdriver', '~>3.142'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', '~>0.21', require: false
-  gem 'webdrivers', '~>4.6'
   gem 'site_prism'
+  gem 'webdrivers', '~>4.6'
 end

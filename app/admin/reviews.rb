@@ -1,6 +1,6 @@
 ActiveAdmin.register Review do
   actions :show, :index
-  
+
   decorate_with ReviewDecorator
   includes :book, :user
 
@@ -54,5 +54,4 @@ ActiveAdmin.register Review do
     resource.rejected!
     redirect_to admin_review_path(resource), notice: I18n.t('active_admin.reviews.successfully_rejected')
   end
-  
 end

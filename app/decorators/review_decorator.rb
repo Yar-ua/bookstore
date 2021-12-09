@@ -1,12 +1,12 @@
 class ReviewDecorator < Draper::Decorator
   delegate_all
   decorates_association :user
-  
+
   STAR_RATING_CLASSNAMES = {
     active: 'fa fa-star rate-star',
     inactive: 'fa fa-star rate-empty'
   }.freeze
-  
+
   def formatted_created_at
     created_at.strftime('%m/%d/%y')
   end
@@ -26,5 +26,4 @@ class ReviewDecorator < Draper::Decorator
       h.tag.i(class: index <= score ? STAR_RATING_CLASSNAMES[:active] : STAR_RATING_CLASSNAMES[:inactive])
     end
   end
-
 end
