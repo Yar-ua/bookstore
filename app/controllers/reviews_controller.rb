@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
       redirect_to book_path(id: @book.id)
       flash[:success] = I18n.t('reviews.create.success')
     else
-      render 'book/show'
+      render 'books/show'
     end
   end
   

@@ -2,7 +2,7 @@
 - reviews.each do |review|
   .general-message-wrap.divider-lg
     .clearfix
-      %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= review.user.email #review.user.avatar_letter
+      %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= review.user.avatar_letter
       .ml-70
         %div
           .general-message-date.hidden-xs= review.decorate.formatted_created_at

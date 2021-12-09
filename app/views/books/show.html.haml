@@ -37,15 +37,7 @@
           %p.pull-left= t('book.materials')
           %p.lead.small.pull-right= @book.material
   .mb-80
-    %h3 Write a Review
-    %p.general-info-text Score
     .mb-15
-      %i.fa.fa-star.rate-empty
-      %i.fa.fa-star.rate-empty
-      %i.fa.fa-star.rate-empty
-      %i.fa.fa-star.rate-empty
-      %i.fa.fa-star.rate-empty
-      .col-md-8
-      = render 'shared/review_form', review: @review
+      = render 'reviews/review_form', review: @review
   .mb-80
-    = render 'shared/reviews', reviews: @book.approved_reviews # reviews: @book.reviews
+    = render 'reviews/reviews', reviews: @book.approved_reviews

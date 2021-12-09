@@ -23,6 +23,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Warden::Test::Helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   # Capybara.default_driver = :selenium_chrome
 end

@@ -1,0 +1,11 @@
+=> [32m#<Review:0x0000558ba5efd798[0m
+ id: [1;34m79[0m,
+ score: [1;34m1[0m,
+ title: [31m[1;31m"[0m[31mMonika Schuster[1;31m"[0m[31m[0m,
+ message:
+  [31m[1;31m"[0m[31mOdit repudiandae perferendis deserunt mollitia error. Neque quisquam voluptates facilis deserunt rerum. Tempore accusantium quidem quos dolorem possimus impedit iusto. Dolore quae qui aperiam provident sunt occaecati illum. Nam ratione corrupti reiciendis commodi at neque illum.[1;31m"[0m[31m[0m,
+ status: [31m[1;31m"[0m[31mapproved[1;31m"[0m[31m[0m,
+ book_id: [1;34m165[0m,
+ user_id: [1;34m133[0m,
+ created_at: [1;34;4mFri[0m, [1;34m01[0m [1;34;4mApr[0m [1;34m2022[0m [1;34m21[0m:[1;34m05[0m:[1;35m20.308013000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mFri[0m, [1;34m01[0m [1;34;4mApr[0m [1;34m2022[0m [1;34m21[0m:[1;34m05[0m:[1;35m20.308013000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m

@@ -51,4 +51,5 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', '~>0.21', require: false
   gem 'webdrivers', '~>4.6'
+  gem 'site_prism'
 end
