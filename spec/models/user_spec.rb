@@ -7,6 +7,7 @@ RSpec.describe User do
   it { expect(user).to validate_presence_of(:email) }
   it { expect(user).to validate_presence_of(:password) }
   it { is_expected.to have_many(:reviews) }
+  it { is_expected.to have_one(:cart) }
 
   describe 'user from omniauth' do
     let(:auth) { @auth = OmniAuth.config.mock_auth[:facebook] }

@@ -4,8 +4,8 @@
   = render 'partials/head'
   %body
     = render 'partials/header', cached: true
-    -# %main.container#main{class: yield(:main_extra_class)}
     = render 'partials/flash'
-    = yield
+    %main.container
+      = yield
     = render 'partials/footer', cached: true
   

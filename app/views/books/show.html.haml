@@ -1,43 +1,42 @@
-%main.container
-  = link_to :back, class: "general-back-link" do
-    %i.fa.fa-long-arrow-left.mr-15
-    = t('book.back_to_results')
-  .row
-    .col-sm-6
-      = render 'books/book_gallery', book: @book
-    .col-sm-6
-      %h1.mt-res-0= @book.title
-      %p.lead.small= @book.book_authors
-      .row
-        = render 'shared/counter_form', counter_form: @counter_form, book: @book
+= link_to :back, class: "general-back-link" do
+  %i.fa.fa-long-arrow-left.mr-15
+  = t('book.back_to_results')
+.row
+  .col-sm-6
+    = render 'books/book_gallery', book: @book
+  .col-sm-6
+    %h1.mt-res-0= @book.title
+    %p.lead.small= @book.book_authors
+    .row
+      = render 'shared/counter_form', counter_form: @counter_form, book: @book
 
-      .general-info-wrap.divider-lg#description
-        %description{text: @book.description, size: 500}
-        %p= t('description')
-        %p.lead.small.line-height-2
-          %span#short_text
-            = @book.short_description
-          - if @book.big_description_length?
-            %span#dots= t('books.dots')
-            %span#more_text.d-n
-              = @book.description
-            %a.b-n.in-gold-500.ml-10#btn_read_more= t('book.read_more')
-            %a.b-n.in-gold-500.ml-10#hide_read_more.d-n= t('book.hide_read_more')
-        
-      .general-info-wrap.divider-lg
-        .clearfix
-          %p.pull-left= t('book.year_of_publication')
-          %p.lead.small.pull-right= @book.year
-      .general-info-wrap.divider-lg
-        .clearfix
-          %p.pull-left= t('book.dimensions_title')
-          %p.lead.small.pull-right= @book.dimensions
-      .general-info-wrap.divider-lg
-        .clearfix
-          %p.pull-left= t('book.materials')
-          %p.lead.small.pull-right= @book.material
-  .mb-80
-    .mb-15
-      = render 'reviews/review_form', review: @review
-  .mb-80
-    = render 'reviews/reviews', reviews: @book.approved_reviews
+    .general-info-wrap.divider-lg#description
+      %description{text: @book.description, size: 500}
+      %p= t('description')
+      %p.lead.small.line-height-2
+        %span#short_text
+          = @book.short_description
+        - if @book.big_description_length?
+          %span#dots= t('books.dots')
+          %span#more_text.d-n
+            = @book.description
+          %a.b-n.in-gold-500.ml-10#btn_read_more= t('book.read_more')
+          %a.b-n.in-gold-500.ml-10#hide_read_more.d-n= t('book.hide_read_more')
+      
+    .general-info-wrap.divider-lg
+      .clearfix
+        %p.pull-left= t('book.year_of_publication')
+        %p.lead.small.pull-right= @book.year
+    .general-info-wrap.divider-lg
+      .clearfix
+        %p.pull-left= t('book.dimensions_title')
+        %p.lead.small.pull-right= @book.dimensions
+    .general-info-wrap.divider-lg
+      .clearfix
+        %p.pull-left= t('book.materials')
+        %p.lead.small.pull-right= @book.material
+.mb-80
+  .mb-15
+    = render 'reviews/review_form', review: @review
+.mb-80
+  = render 'reviews/reviews', reviews: @book.approved_reviews

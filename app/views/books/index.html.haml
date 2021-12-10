@@ -1,13 +1,12 @@
-%main.container
-  %h1.general-title-margin= t('catalog.catalog')
-  .hidden-xs.clearfix
-    = render 'sort'
-    %ul.list-inline.pt-10.mb-25.mr-240
-      = render 'categories', cached: true
+%h1.general-title-margin= t('catalog.catalog')
+.hidden-xs.clearfix
+  = render 'sort'
+  %ul.list-inline.pt-10.mb-25.mr-240
+    = render 'categories', cached: true
 
-  .mb-120
-    #books
-      = render 'books'
-    
-    #paginator.text-center
-      = render 'pagination', pagy: @pagy
+.mb-120
+  #books
+    = render 'books'
+  
+  #paginator.text-center
+    = render 'pagination', pagy: @pagy

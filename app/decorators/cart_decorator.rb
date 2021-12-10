@@ -1,4 +1,5 @@
-class CartDecorator < Draper::Decorator #ApplicationDecorator
+# ApplicationDecorator
+class CartDecorator < Draper::Decorator
   delegate_all
   decorates_association :line_items
   delegate :format, to: :subtotal, prefix: :subtotal

@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'Catalog page' do
   let!(:book) { create(:book) }
 
@@ -6,8 +8,7 @@ RSpec.describe 'Catalog page' do
   end
 
   it 'go to current book page' do
-    first('.thumb-hover')
-    find('a', class: 'thumb-hover-link book').click
+    find_link(class: 'thumb-hover-link', href: book_path(book)).click
     expect(page).to have_current_path book_path(book.id)
   end
 

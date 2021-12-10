@@ -17,11 +17,11 @@ class BooksController < ApplicationController
     @review = Review.new(book: @book)
     @counter_form = CounterForm.new
   end
-  
+
   def add_to_cart
     @counter_form = CounterForm.new(counter_form_params)
     return unless @counter_form.valid?
-    
+
     shopping_cart.add_book(@book, quantity: @counter_form.quantity)
     @counter_form.reset
   end
@@ -31,7 +31,7 @@ class BooksController < ApplicationController
   def counter_form_params
     params.require(:counter_form).permit(:quantity) if params[:counter_form]
   end
-  
+
   def sort_params
     params.permit(:category_id, :sort)
   end

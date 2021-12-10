@@ -4,6 +4,7 @@ en:
       title: Cart
       checkout: Checkout
       current_coupon: 'Your coupon: %{code}'
+      invalid_coupon: 'Invalid coupon'
     form:
       product: Product
       price: Price

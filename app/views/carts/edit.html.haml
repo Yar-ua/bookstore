@@ -1,14 +1,13 @@
-%main.container
-  .general-main-wrap
-    %h1.general-title-margin= t('.title')
-    .visible-xs= render 'form_mobile', cart: @cart
-    .hidden-xs= render 'form', cart: @cart
-    .general-order-wrap
-      .row
-        .col-sm-4
-          - if @cart.coupon
-            = t('.current_coupon', code: @cart.coupon.code)
-          - else
-            = render 'coupon_form', cart: @cart
-        .col-sm-8= render 'summary', cart: @cart
-    %button.btn.btn-default.mb-20.hidden-xs.center-block= t('.checkout')
+.general-main-wrap
+  %h1.general-title-margin= t('.title')
+  .visible-xs= render 'form_mobile', cart: @cart
+  .hidden-xs= render 'form', cart: @cart
+  .general-order-wrap
+    .row
+      .col-sm-4
+        - if @cart.coupon
+          = t('.current_coupon', code: @cart.coupon.code)
+        - else
+          = render 'coupon_form', cart: @cart
+      .col-sm-8= render 'summary', cart: @cart
+  %button.btn.btn-default.mb-20.hidden-xs.center-block= t('.checkout')
