@@ -4,7 +4,8 @@
     .col-sm-6.col-md-3.best-sellers
       .general-thumb-wrap
         .thumbnail.general-thumbnail
-          %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+          -# %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+          = image_tag best_seller.general_image_thumb || 'blank.svg', class: 'img-shadow general-thumbnail-img', alt: best_seller.title
           .thumb-hover
             .general-thumb-link-wrap
               = link_to book_path(best_seller), class: "thumb-hover-link book" do

@@ -6,8 +6,10 @@ import '@client-side-validations/simple-form'
 import '../js/book';
 import '../js/star_rating';
 import StarRating from '../js/star_rating';
+import ProductGallery from '../js/product_gallery'
 
 window.$ = $;
 window.jQuery = $;
 Rails.start()
 StarRating.start()
+ProductGallery.start();

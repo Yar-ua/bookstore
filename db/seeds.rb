@@ -7,7 +7,7 @@ CATEGORIES.each do |category|
 end
 
 FactoryBot.create_list(:author, 40)
-100.times { FactoryBot.create(:book, category_id: Category.all.sample.id) }
+100.times { FactoryBot.create(:book, :with_images, category_id: Category.all.sample.id) }
 
 Book.all.each do |book|
   3.times do

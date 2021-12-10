@@ -9,6 +9,7 @@ class Book < ApplicationRecord
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many_attached :images
 
   belongs_to :category, counter_cache: true
 

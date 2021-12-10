@@ -16,6 +16,7 @@ gem 'factory_bot_rails', '~>6.1'
 gem 'ffaker', '~>2.18'
 gem 'gon', '~>6.4'
 gem 'haml-rails', '~> 2.0'
+gem 'image_processing', '~> 1.12'
 gem 'jbuilder', '~> 2.7'
 gem 'omniauth-facebook', '~>8.0'
 gem 'omniauth-rails_csrf_protection', '~>1.0'
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop-rails', '~>2.9', require: false
   gem 'rubocop-rspec', '~>2.2', require: false
+  gem 'site_prism', '~>3.7'
 end
 
 group :development do
@@ -50,6 +52,5 @@ group :test do
   gem 'selenium-webdriver', '~>3.142'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', '~>0.21', require: false
-  gem 'site_prism'
   gem 'webdrivers', '~>4.6'
 end

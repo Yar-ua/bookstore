@@ -29,4 +29,25 @@ class BookDecorator < Draper::Decorator
   def price_to_currency
     number_to_currency(object.price, unit: I18n.t('catalog.currency'))
   end
+
+  def general_image
+    images.first
+  end
+
+  def general_image_thumb
+    general_image&.variant({ resize_to_limit: [250, 400] })
+  end
+
+  def images_gallery_thumbs
+    images.map { |image| [image, image.variant({ resize_to_limit: [150, 240] })] }
+  end
+
+  def admin_general_image
+    h.image_tag(general_image.variant(resize_to_limit: [100, 100])) if general_image
+  end
+
+  def admin_images
+    tags = images.map { |image| h.image_tag(image.variant(resize_to_limit: [100, 100])) }
+    h.safe_join(tags)
+  end
 end

@@ -1,8 +1,10 @@
 ActiveAdmin.register Book do
   decorate_with BookDecorator
+  includes :category, :authors # , :material
 
   index do
     selectable_column
+    column :admin_general_image
     column :category
     column :title
     column :book_authors
@@ -14,6 +16,7 @@ ActiveAdmin.register Book do
 
   show do
     attributes_table do
+      row :admin_images
       row :category
       row :title
       row :book_authors
@@ -30,6 +33,7 @@ ActiveAdmin.register Book do
 
   form decorate: true do |f|
     f.inputs do
+      f.input :images, as: :file, input_html: { multiple: true, accept: '.jpg, .jpeg, .png' }, hint: book.admin_images
       f.input :category, collection: Category.order(:name).all
       f.input :title
       f.input :authors, collection: Author.order(:first_name, :last_name).all.decorate
@@ -49,5 +53,5 @@ ActiveAdmin.register Book do
   end
 
   permit_params :category_id, :title, :description, :price, :year, :quantity,
-                :height, :width, :depth, :material, author_ids: []
+                :height, :width, :depth, :material, author_ids: [], images: []
 end

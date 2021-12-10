@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'Current book page' do
   let(:author) { create(:author) }
   let(:book) { create(:book) }
@@ -12,6 +14,8 @@ RSpec.describe 'Current book page' do
   it { expect(page).to have_content(book.decorate.book_authors) }
   it { expect(page).to have_content(dimensions) }
   it { expect(page).to have_content(book.title) }
+  it { expect(page).to have_css('.product-gallery__image') }
+  it { expect(page).to have_css('.product-gallery__thumbs'), count: book.images.count }
 
   it 'when click on read more' do
     find('a', id: 'btn_read_more', text: I18n.t('book.read_more')).click

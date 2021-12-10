@@ -11,5 +11,13 @@ FactoryBot.define do
     width { rand(4.4..8.0).round(1) }
     depth { rand(0.5..2.0).round(1) }
     material { rand(0..2) }
+
+    trait :with_images do
+      after(:build) do |book|
+        Dir[Rails.root.join('spec/fixtures/files/*.{jpg,png}')].sample(3).each do |file_path|
+          book.images.attach io: File.open(file_path), filename: File.basename(file_path)
+        end
+      end
+    end
   end
 end

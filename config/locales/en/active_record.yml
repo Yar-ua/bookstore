@@ -1,0 +1,72 @@
+en:
+  activerecord:
+    models:
+      book:
+        one: Book
+        other: Books
+      author:
+        one: Author
+        other: Authors
+      category:
+        one: Category
+        other: Categories
+      material:
+        one: Material
+        other: Materials
+      review:
+        one: Review
+        other: Reviews
+    attributes:
+      book:
+        images: Images
+        admin_images: Images
+        admin_general_image: Image
+        category: Category
+        title: Title
+        author_names: Authors
+        authors: Authors
+        description: Description
+        short_description: Short description
+        price_format: Price
+        price: Price
+        publication_year: Year of publication
+        material_names: Materials
+        materials: Materials
+        dimensions: Dimensions
+        quantity: Quantity
+        created_at: Created at
+        updated_at: Updated at
+        height: Height
+        width: Width
+        depth: Depth
+      author:
+        first_name: First name
+        last_name: Last name
+        description: Description
+        created_at: Created at
+        updated_at: Updated at
+      category:
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
+      material:
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
+      review:
+        user: User
+        title: Title
+        score: Score
+        message: Review
+        created_at: Created at
+        updated_at: Updated at
+        status_name: Status
+        status: Status
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              invalid: >-
+                Minimum 8 letters, at least 1 uppercase, at least 1 lowercase,
+                at least 1 number. Mustn’t contain spaces inside
