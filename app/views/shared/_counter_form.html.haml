@@ -1,0 +1,12 @@
+= simple_form_for counter_form, url: add_to_cart_book_path(book), remote: true do |f|
+  .col-xs-12.col-md-4
+    %p.h1.in-gold-500.mt-10= book.price_to_currency
+  .col-xs-5.col-md-3
+    .input-group.general-position.product-counter
+      %a.input-link.product-counter__decrease{href: '#'}
+        %i.fa.fa-minus.line-height-40
+      = f.input_field :quantity, as: :string, class: 'form-control quantity-input product-counter__input'
+      %a.input-link.product-counter__increase{href: '#'}
+        %i.fa.fa-plus.line-height-40
+  .col-xs-7.col-md-5
+    = f.button :submit, t('.add_to_cart'), class: 'pull-right general-position'

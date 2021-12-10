@@ -1,0 +1,4 @@
+= simple_form_for cart, namespace: 'apply_coupon', url: cart_path, authenticity_token: true, remote: true, html: { class: 'apply_coupon' } do |f|
+  = f.input :coupon_code, placeholder: true
+  .form-group
+    = f.button :submit, t('.submit'), class: 'btn-primary'

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   include Pagy::Backend
+  before_action :set_book, only: %i[show add_to_cart]
   before_action :set_sort_data, only: :index
 
   def index
@@ -12,15 +13,31 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id]).decorate
     gon.bookQuantity = @book.quantity
     @review = Review.new(book: @book)
+    @counter_form = CounterForm.new
+  end
+  
+  def add_to_cart
+    @counter_form = CounterForm.new(counter_form_params)
+    return unless @counter_form.valid?
+    
+    shopping_cart.add_book(@book, quantity: @counter_form.quantity)
+    @counter_form.reset
   end
 
   private
 
+  def counter_form_params
+    params.require(:counter_form).permit(:quantity) if params[:counter_form]
+  end
+  
   def sort_params
     params.permit(:category_id, :sort)
+  end
+
+  def set_book
+    @book = Book.find(params[:id]).decorate
   end
 
   def set_sort_data

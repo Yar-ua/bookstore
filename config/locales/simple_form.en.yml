@@ -7,3 +7,9 @@ en:
       mark: '*'
     error_notification:
       default_message: "Please review the problems below:"
+    labels:
+      cart:
+        coupon_code: Enter Your Coupon Code
+    placeholders:
+      cart:
+        coupon_code: Enter Your Coupon Code

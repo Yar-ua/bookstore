@@ -1,0 +1,29 @@
+= simple_form_for cart, namespace: 'cart_mobile', url: cart_path, authenticity_token: true, remote: true, html: { class: 'cart_items' } do |f|
+  = f.simple_fields_for :line_items do |item_form|
+    .general-cart-item.divider-lg-bottom
+      %button.close.general-cart-close{type: 'button', 'aria-label': t('.close')}
+        %span{'aria-hidden': 'true'} &times;
+      .general-img-wrap-table
+        = image_tag item_form.object.book_general_image_thumb || 'blank.svg', class: 'cart-img-shadow', alt: item_form.object.book_title
+      %p.title= item_form.object.book_title
+      %table.table
+        %tr
+          %td
+            %span.in-grey-600= t('.price')
+          %td
+            %span.font-16.in-gold-500= item_form.object.book_price_to_currency
+        %tr
+          %td.vertical-middle
+            %span.in-grey-600= t('.quantity')
+          %td
+            .input-group
+              %a.input-link{href: '#'}
+                %i.fa.fa-minus.line-height-40
+              %input.form-control.quantity-input{type: 'text'}
+              %a.input-link{href: '#'}
+                %i.fa.fa-plus.line-height-40
+        %tr
+          %td
+            %span.in-grey-600= t('.subtotal')
+          %td
+            %span.font-16.in-gold-500= item_form.object.subtotal_format

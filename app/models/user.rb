@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   attr_accessor :skip_password_validation
 
+  has_one :cart, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :reviews, dependent: :destroy
 

@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
       redirect_to book_path(id: @book.id)
       flash[:success] = I18n.t('reviews.create.success')
     else
+      @counter_form = CounterForm.new
       render 'books/show'
     end
   end

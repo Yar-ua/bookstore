@@ -1,0 +1,38 @@
+= simple_form_for cart, url: cart_path, authenticity_token: true, remote: true, html: { class: 'cart_items' } do |f|
+  %table.table.table-hover
+    %thead
+      %tr.no-hover
+        %th.col-pic.pl-0
+          %span.in-grey-600= t('.product')
+        %th.col-title
+        %th.col-price
+          %span.in-grey-600= t('.price')
+        %th.col-quantity
+          %span.in-grey-600= t('.quantity')
+        %th.col-total
+          %span.in-grey-600= t('.subtotal')
+        %th.col-close
+    %tbody
+      = f.simple_fields_for :line_items do |item_form|
+        %tr
+          %td
+            = item_form.hidden_field :id
+            .general-img-wrap-table
+              = image_tag item_form.object.book_general_image_thumb || 'blank.svg', class: 'cart-img-shadow pull-left', alt: item_form.object.book_title
+          %td
+            %p.title= item_form.object.book_title
+          %td
+            %span.font-16.in-gold-500= item_form.object.book_price_to_currency
+          %td
+            .input-group.product-counter
+              %a.input-link.product-counter__decrease{href: '#'}
+                %i.fa.fa-minus.line-height-40
+              = item_form.input_field :quantity, as: :string, class: 'form-control quantity-input product-counter__input'
+              %a.input-link.product-counter__increase{href: '#'}
+                %i.fa.fa-plus.line-height-40
+          %td
+            %span.font-16.in-gold-500= item_form.object.subtotal_format
+          %td
+            %label.close.general-cart-close{type: 'button', 'aria-label': t('.close')}
+              = item_form.input_field :_destroy, as: :boolean, hidden: true
+              %span{'aria-hidden': 'true'} &times;

@@ -7,12 +7,12 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand= t('header.title')
-      %a.shop-link.pull-right.visible-xs{href: "#"}
+      = link_to edit_cart_path, class: 'shop-link pull-right visible-xs' do
         %span.shop-icon
-          %span.shop-quantity 3
-    %a.shop-link.pull-right.hidden-xs{href: "#"}
+          %span.shop-quantity= shopping_cart.amount
+    = link_to edit_cart_path, class: 'shop-link pull-right hidden-xs' do
       %span.shop-icon
-        %span.shop-quantity 3
+        %span.shop-quantity= shopping_cart.amount
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .visible-xs
         %ul.nav.navbar-nav

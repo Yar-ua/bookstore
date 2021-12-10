@@ -9,7 +9,7 @@
       %h1.mt-res-0= @book.title
       %p.lead.small= @book.book_authors
       .row
-        = render 'books/form_book'
+        = render 'shared/counter_form', counter_form: @counter_form, book: @book
 
       .general-info-wrap.divider-lg#description
         %description{text: @book.description, size: 500}

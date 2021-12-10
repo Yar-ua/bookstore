@@ -1,0 +1,26 @@
+en:
+  carts:
+    edit:
+      title: Cart
+      checkout: Checkout
+      current_coupon: 'Your coupon: %{code}'
+    form:
+      product: Product
+      price: Price
+      quantity: Quantity
+      subtotal: Subtotal
+      close: Close
+    form_mobile:
+      product: Product
+      price: Price
+      quantity: Quantity
+      subtotal: Subtotal
+      close: Close
+    coupon_form:
+      enter_coupon: Enter Coupon
+      submit: Apply coupon
+    summary:
+      summary: Order Summary
+      subtotal: Subtotal
+      coupon: Coupon
+      total: Order Total

@@ -1,0 +1,7 @@
+:plain
+  document.querySelectorAll('.shop-quantity').forEach(function(el) {
+    el.innerText = '#{j @cart.amount}';
+  });
+  document.getElementById('main').innerHTML = '#{ j render(template: 'carts/edit') }';
+  ProductCounter.create();
+  Cart.create();

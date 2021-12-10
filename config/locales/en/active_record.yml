@@ -63,6 +63,8 @@ en:
         status_name: Status
         status: Status
     errors:
+      messages:
+        invalid_coupon: Is invalid. Try another
       models:
         user:
           attributes:

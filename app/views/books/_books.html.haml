@@ -1,19 +1,4 @@
 - @books.in_groups_of(Book::BOOKS_IN_GROUP) do |group|
   .row
     - group.compact.each do |book|
-      .col-xs-6.col-sm-3
-        .general-thumb-wrap
-          .thumbnail.general-thumbnail
-            -# = image_tag("http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", class: "img-shadow general-thumbnail-img", alt: book.title)
-            = image_tag book.general_image_thumb || 'blank.svg', class: 'img-shadow general-thumbnail-img', alt: book.title
-            .thumb-hover
-              .general-thumb-link-wrap
-                = link_to book_path(book), class: "thumb-hover-link book" do
-                  %i.fa.fa-eye.thumb-icon.pt-10{'aria-hidden': "true"}
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-shopping-cart.thumb-icon.pt-10
-        .general-thumb-info
-          %p.title= book.title
-          %p.font-16.in-gold-500= book.price_to_currency
-          %span.divider-sm
-          %p.lead.small= book.book_authors
+      = render 'list_item', book: book

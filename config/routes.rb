@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   resources :books, only: %i[show index] do
     resources :reviews, only: :create
+    member do
+      post 'add_to_cart'
+    end
   end
+  resource :cart, only: %i[edit update]
   resources :settings, only: :new
   resources :accounts, only: %i[update destroy]
   resources :addresses, only: :create

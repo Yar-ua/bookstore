@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_201543) do
+ActiveRecord::Schema.define(version: 2022_04_05_192859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,11 +108,41 @@ ActiveRecord::Schema.define(version: 2022_04_04_201543) do
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "coupon_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coupon_id"], name: "index_carts_on_coupon_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "books_count"
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_coupons_on_code", unique: true
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.integer "quantity", default: 1, null: false
+    t.string "itemable_type"
+    t.bigint "itemable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_line_items_on_book_id"
+    t.index ["itemable_type", "itemable_id"], name: "index_line_items_on_itemable"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -157,5 +187,8 @@ ActiveRecord::Schema.define(version: 2022_04_04_201543) do
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
   add_foreign_key "books", "categories"
+  add_foreign_key "carts", "coupons"
+  add_foreign_key "carts", "users"
+  add_foreign_key "line_items", "books"
   add_foreign_key "reviews", "users"
 end

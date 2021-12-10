@@ -1,0 +1,5 @@
+:plain
+  document.querySelectorAll('.shop-quantity').forEach(function(el) {
+    el.innerText = '#{escape_javascript(shopping_cart.amount)}';
+  });
+  window.scroll(0, 0)

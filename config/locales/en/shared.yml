@@ -3,3 +3,5 @@ en:
     write_review: Write a review
     submit: Post
     virified: verified review
+    counter_form:
+      add_to_cart: Add to Cart

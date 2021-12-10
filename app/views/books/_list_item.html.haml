@@ -1,0 +1,15 @@
+.col-xs-6.col-sm-3
+  .general-thumb-wrap
+    .thumbnail.general-thumbnail
+      = image_tag book.general_image_thumb || 'blank.svg', class: 'img-shadow general-thumbnail-img', alt: book.title
+      .thumb-hover
+        .general-thumb-link-wrap
+          = link_to book, class: 'thumb-hover-link' do
+            %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'}
+          = link_to add_to_cart_book_path(book), class: 'thumb-hover-link', method: :post, remote: true do
+            %i.fa.fa-shopping-cart.thumb-icon
+  .general-thumb-info
+    %p.title= book.title
+    %p.font-16.in-gold-500= book.price_to_currency
+    %span.divider-sm
+    %p.lead.small= book.book_authors
