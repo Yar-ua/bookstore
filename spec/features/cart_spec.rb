@@ -29,16 +29,16 @@ RSpec.describe 'Cart', js: true do
     end
   end
 
-  # describe 'remove product' do
-  #   before do
-  #     visit edit_cart_path
-  #   end
+  describe 'remove product' do
+    before do
+      visit edit_cart_path
+    end
 
-  #   it do
-  #     find_button('', class: 'close').click
-  #     expect(page).to have_no_css('label.close')
-  #   end
-  # end
+    it do
+      find(class: 'general-cart-close').click
+      expect(page).to have_no_css('label.close')
+    end
+  end
 
   describe 'add card' do
     before do
@@ -51,7 +51,7 @@ RSpec.describe 'Cart', js: true do
       let(:coupon) { build(:coupon) }
 
       it 'shows errors' do
-        expect(page).to have_current_path edit_cart_path
+        expect(page).to have_css('.invalid-feedback')
       end
     end
 
@@ -60,8 +60,7 @@ RSpec.describe 'Cart', js: true do
       let(:expected_discount) { book.price * coupon.amount / 100 }
 
       it 'shows discount' do
-        # expect(page).to have_content(expected_discount)
-        expect(page).to have_current_path edit_cart_path
+        expect(page).to have_content(expected_discount.to_s.to_f.round(2))
       end
     end
   end

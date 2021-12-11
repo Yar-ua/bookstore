@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_192859) do
+ActiveRecord::Schema.define(version: 2022_04_05_193059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,14 +135,14 @@ ActiveRecord::Schema.define(version: 2022_04_05_192859) do
   create_table "line_items", force: :cascade do |t|
     t.bigint "book_id", null: false
     t.integer "price_cents", default: 0, null: false
-    t.string "price_currency", default: "USD", null: false
+    t.string "price_currency", default: "EUR", null: false
     t.integer "quantity", default: 1, null: false
-    t.string "itemable_type"
-    t.bigint "itemable_id"
+    t.string "cart_type"
+    t.bigint "cart_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_line_items_on_book_id"
-    t.index ["itemable_type", "itemable_id"], name: "index_line_items_on_itemable"
+    t.index ["cart_type", "cart_id"], name: "index_line_items_on_cart"
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -5,7 +5,7 @@ class Cart < ApplicationRecord
 
   belongs_to :user, optional: true
   belongs_to :coupon, optional: true
-  has_many :line_items, as: :itemable, dependent: :destroy
+  has_many :line_items, dependent: :destroy
 
   validates :coupon_code, coupon: true
 

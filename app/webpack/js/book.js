@@ -16,20 +16,20 @@ $(document).ready(function(){
     $('#short_text').css('display', 'inline');
   });
   
-  $('#minus').click(function(e){
-    var current_value = $('.input-count-book').val();
-    if (current_value > 1) {
-      var new_value = Number(current_value) - 1;
-      $('.input-count-book').val(new_value);
-    }
-  })
+  // $('#minus').click(function(e){
+  //   var current_value = $('.input-count-book').val();
+  //   if (current_value > 1) {
+  //     var new_value = Number(current_value) - 1;
+  //     $('.input-count-book').val(new_value);
+  //   }
+  // })
 
-  $('#plus').click(function(e){
-    var current_value = $('.input-count-book').val();
-    if (current_value < gon.bookQuantity) {
-      var new_value = Number(current_value) + 1;
-      $('.input-count-book').val(new_value);
-    }
-  })  
+  // $('#plus').click(function(e){
+  //   var current_value = $('.input-count-book').val();
+  //   if (current_value < gon.bookQuantity) {
+  //     var new_value = Number(current_value) + 1;
+  //     $('.input-count-book').val(new_value);
+  //   }
+  // })  
 
 })
