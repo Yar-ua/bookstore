@@ -10,4 +10,4 @@
         - else
           = render 'coupon_form', cart: @cart
       .col-sm-8= render 'summary', cart: @cart
-  %button.btn.btn-default.mb-20.hidden-xs.center-block= t('.checkout')
+  = link_to t('.checkout'), checkouts_login_path, class: "button btn btn-default mb-20 #{class_names(disabled: @cart.empty?)}"
