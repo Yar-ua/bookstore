@@ -9,9 +9,9 @@
     .row
       .col-md-5.mb-40
         %h3.general-subtitle.mt-0= t('settings.billing_address')
-        = render partial: 'addresses/address_form', locals: { address_type: 'billing', address_form: @billing_address }
+        = render partial: 'addresses/address_form', locals: { address_type: :billing, address_form: @billing_address }
       .col-md-5.col-md-offset-1.mb-25
         %h3.general-subtitle.mt-0= t('settings.shipping_address')
-        = render partial: 'addresses/address_form', locals: { address_type: 'shipping', address_form: @shipping_address }
+        = render partial: 'addresses/address_form', locals: { address_type: :shipping, address_form: @shipping_address }
   #privacy.tab-pane.fade{role: "tabpanel"}
     = render 'settings/account_form'

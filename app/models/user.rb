@@ -8,9 +8,12 @@ class User < ApplicationRecord
 
   attr_accessor :skip_password_validation
 
-  has_one :cart, dependent: :destroy
-  has_many :addresses, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_one :cart, dependent: :destroy
+  has_one :billing_address, as: :addressable, dependent: :destroy
+  has_one :shipping_address, as: :addressable, dependent: :destroy
+  
+  accepts_nested_attributes_for :billing_address, :shipping_address
 
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :password, presence: true, length: { in: 6..20 }, unless: :skip_password_validation
