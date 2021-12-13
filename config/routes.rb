@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :accounts, only: %i[update destroy]
   resources :addresses, only: :create
   resources :settings_email, only: :update
-  
+
   namespace :checkouts do
     resource :login, only: %i[show]
     resource :address, only: %i[show update]

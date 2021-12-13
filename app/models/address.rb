@@ -3,7 +3,7 @@ class Address < ApplicationRecord
   ADDRESS_REGEXP = /\A[a-zA-Z0-9 \-,]*\z/.freeze
   ZIP_REGEXP = /\A[0-9\-]*\z/.freeze
   PHONE_REGEXP = /\A\+[0-9]*\z/.freeze
-  
+
   belongs_to :user
   belongs_to :addressable, polymorphic: true
 
