@@ -3,7 +3,7 @@ class ShoppingCartService
 
   attr_reader :session, :current_user
 
-  delegate :update, :amount, :empty?, to: :current_cart
+  delegate :update, :update!, :amount, :empty?, :checkout, to: :current_cart
 
   def initialize(session, current_user)
     @session = session
@@ -11,7 +11,12 @@ class ShoppingCartService
   end
 
   def current_cart
-    @current_cart ||= current_user&.cart || Cart.find_by(id: session[CART_SESSION_KEY]) || Cart.new
+    @current_cart ||= current_user&.cart || Cart.find_by(id: session[CART_SESSION_KEY]) || Cart.new(user: current_user)
+  end
+  
+  def empty
+    session.delete(CART_SESSION_KEY)
+    current_cart.destroy if current_cart.persisted?
   end
 
   def add_book(book, quantity: 1)
@@ -27,9 +32,7 @@ class ShoppingCartService
   private
 
   def save_current_cart!
-    current_cart.save! do |cart|
-      cart.user = current_user if current_user
-    end
+    current_cart.save!
     session[CART_SESSION_KEY] = current_cart.id
   end
 end

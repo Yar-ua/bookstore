@@ -1,5 +1,6 @@
 class LineItem < ApplicationRecord
   MIN_QUANTITY = 1
+  REJECTED_LINE_ITEM_ATTRIBUTES = %w[id itemable_type itemable_id].freeze
 
   default_scope -> { order(:created_at) }
 
@@ -14,5 +15,9 @@ class LineItem < ApplicationRecord
 
   def subtotal
     price * quantity
+  end
+  
+  def clone_attributes
+    attributes.reject { |attribute| REJECTED_LINE_ITEM_ATTRIBUTES.include?(attribute) }
   end
 end

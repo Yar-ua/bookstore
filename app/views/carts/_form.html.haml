@@ -18,11 +18,11 @@
           %td
             = item_form.hidden_field :id
             .general-img-wrap-table
-              = image_tag item_form.object.book_general_image_thumb || 'blank.svg', class: 'cart-img-shadow pull-left', alt: item_form.object.book_title
+              = image_tag item_form.object.general_image_thumb || 'blank.svg', class: 'cart-img-shadow pull-left', alt: item_form.object.title
           %td
-            %p.title= item_form.object.book_title
+            %p.title= item_form.object.title
           %td
-            %span.font-16.in-gold-500= item_form.object.book_price_to_currency
+            %span.font-16.in-gold-500= item_form.object.price_to_currency
           %td
             .input-group.product-counter
               %a.input-link.product-counter__decrease{href: '#'}

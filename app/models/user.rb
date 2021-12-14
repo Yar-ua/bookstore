@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_one :cart, dependent: :destroy
+  has_one :credit_card, dependent: :destroy
   has_one :billing_address, as: :addressable, dependent: :destroy
   has_one :shipping_address, as: :addressable, dependent: :destroy
 

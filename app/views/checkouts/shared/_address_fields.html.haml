@@ -1,0 +1,7 @@
+= form.input :first_name
+= form.input :last_name
+= form.input :address
+= form.input :city
+= form.input :zip
+= form.input :country #_code, as: :country, prompt: t('simple_form.prompts.user.country_code')
+= form.input :phone, wrapper_html: { class: 'mb-60' }

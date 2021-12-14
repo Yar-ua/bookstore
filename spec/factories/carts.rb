@@ -4,6 +4,10 @@ FactoryBot.define do
       user
     end
 
+    trait :with_coupon do
+      coupon
+    end
+
     transient do
       line_items_size { rand(1..10) }
     end

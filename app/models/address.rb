@@ -3,6 +3,7 @@ class Address < ApplicationRecord
   ADDRESS_REGEXP = /\A[a-zA-Z0-9 \-,]*\z/.freeze
   ZIP_REGEXP = /\A[0-9\-]*\z/.freeze
   PHONE_REGEXP = /\A\+[0-9]*\z/.freeze
+  REJECTED_ATTRIBUTES = %w[id type addressable_type addressable_id].freeze
 
   belongs_to :user
   belongs_to :addressable, polymorphic: true
@@ -31,4 +32,20 @@ class Address < ApplicationRecord
             format: { with: PHONE_REGEXP,
                       message: 'Consist of 0-9 only no special symbols, and + on beginning' },
             length: { maximum: 15 }
+  def country_name
+    country = ISO3166::Country[country]
+    country&.translations&.dig(I18n.locale.to_s) || country&.name
+  end
+
+  def clone_attributes
+    attributes.reject { |attribute| REJECTED_ATTRIBUTES.include?(attribute) }
+  end
+
+  private
+
+  def normalize_phone
+    return if phone.blank?
+
+    self.phone = "+#{TelephoneNumber.parse(phone, country_code).international_number(formatted: false)}"
+  end
 end

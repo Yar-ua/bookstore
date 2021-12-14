@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'aasm', '~> 5.2'
 gem 'activeadmin', '>= 2.9'
 gem 'bcrypt', '~>3.1'
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -10,6 +11,7 @@ gem 'capybara-screenshot', '~> 1.0'
 gem 'client_side_validations', '~>18.0'
 gem 'client_side_validations-simple_form', '~>13.0'
 gem 'country_select', '~> 4.0'
+gem 'credit_card_validations', '~> 4.1'
 gem 'devise', '~>4.8'
 gem 'draper', '~>4.0'
 gem 'factory_bot_rails', '~>6.1'

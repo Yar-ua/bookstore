@@ -4,14 +4,14 @@
       %button.close.general-cart-close{type: 'button', 'aria-label': t('.close')}
         %span{'aria-hidden': 'true'} &times;
       .general-img-wrap-table
-        = image_tag item_form.object.book_general_image_thumb || 'blank.svg', class: 'cart-img-shadow', alt: item_form.object.book_title
-      %p.title= item_form.object.book_title
+        = image_tag item_form.object.general_image_thumb || 'blank.svg', class: 'cart-img-shadow', alt: item_form.object.title
+      %p.title= item_form.object.title
       %table.table
         %tr
           %td
             %span.in-grey-600= t('.price')
           %td
-            %span.font-16.in-gold-500= item_form.object.book_price_to_currency
+            %span.font-16.in-gold-500= item_form.object.price_to_currency
         %tr
           %td.vertical-middle
             %span.in-grey-600= t('.quantity')

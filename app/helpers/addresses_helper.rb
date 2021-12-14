@@ -1,8 +1,6 @@
 module AddressesHelper
   def create_or_update(params)
     @address_service = AddressService.new(params, current_user)
-
-    # type = params[:address_type]
     address = Address.find_by(user_id: current_user.id, type: @address_service.address_type)
     if address.present?
       address.update(@address_service.filter_params)

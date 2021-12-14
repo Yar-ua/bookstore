@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_193059) do
+ActiveRecord::Schema.define(version: 2022_04_16_164738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,12 +127,46 @@ ActiveRecord::Schema.define(version: 2022_04_05_193059) do
     t.integer "books_count"
   end
 
+  create_table "checkouts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "delivery_id"
+    t.bigint "credit_card_id"
+    t.boolean "use_billing_address", default: false, null: false
+    t.string "stage", default: "new", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["credit_card_id"], name: "index_checkouts_on_credit_card_id"
+    t.index ["delivery_id"], name: "index_checkouts_on_delivery_id"
+    t.index ["user_id"], name: "index_checkouts_on_user_id"
+  end
+
   create_table "coupons", force: :cascade do |t|
     t.string "code", null: false
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_coupons_on_code", unique: true
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number", null: false
+    t.string "cvv", null: false
+    t.integer "expiration_month", null: false
+    t.integer "expiration_year", null: false
+    t.string "cardholder_name", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "method", null: false
+    t.string "days"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -146,6 +180,21 @@ ActiveRecord::Schema.define(version: 2022_04_05_193059) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_line_items_on_book_id"
     t.index ["cart_type", "cart_id"], name: "index_line_items_on_cart"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coupon_id"
+    t.bigint "credit_card_id", null: false
+    t.bigint "delivery_id", null: false
+    t.string "status", null: false
+    t.datetime "completed_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coupon_id"], name: "index_orders_on_coupon_id"
+    t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
+    t.index ["delivery_id"], name: "index_orders_on_delivery_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -192,6 +241,14 @@ ActiveRecord::Schema.define(version: 2022_04_05_193059) do
   add_foreign_key "books", "categories"
   add_foreign_key "carts", "coupons"
   add_foreign_key "carts", "users"
+  add_foreign_key "checkouts", "credit_cards"
+  add_foreign_key "checkouts", "deliveries"
+  add_foreign_key "checkouts", "users"
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "line_items", "books"
+  add_foreign_key "orders", "coupons"
+  add_foreign_key "orders", "credit_cards"
+  add_foreign_key "orders", "deliveries"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "users"
 end

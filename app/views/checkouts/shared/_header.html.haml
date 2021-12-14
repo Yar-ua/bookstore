@@ -1,0 +1,12 @@
+%h1.general-title-margin= t('.title')
+%ul.steps.list-inline
+  - steps.each do |step|
+    - unless step[:first]
+      %li.step-divider
+    %li.step{class: class_names(active: step[:active], done: step[:done])}
+      %span.step-number
+        - if step[:done]
+          %i.fa.fa-check
+        - else
+          = step[:index]
+      %span.step-text.hidden-xs= step[:name]

@@ -7,7 +7,7 @@ FactoryBot.define do
     address { FFaker::Address.street_name }
     city { FFaker::Address.city }
     zip { rand(11_111..99_999) }
-    country { 'Country' }
+    country { 'UA' }
     phone { "+#{rand(11_111_111_111..99_999_999_999).round(0)}" }
 
     trait :billing do

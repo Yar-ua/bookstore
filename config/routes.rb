@@ -20,10 +20,10 @@ Rails.application.routes.draw do
   namespace :checkouts do
     resource :login, only: %i[show]
     resource :address, only: %i[show update]
-    # resource :delivery, only: %i[show update]
-    # resource :payment, only: %i[show update]
-    # resource :order, only: :create
-    # resource :confirm, only: :show
-    # resource :complete, only: :show
+    resource :delivery, only: %i[show update]
+    resource :payment, only: %i[show update]
+    resource :order, only: :create
+    resource :confirm, only: :show
+    resource :complete, only: :show
   end
 end

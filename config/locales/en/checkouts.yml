@@ -1,0 +1,81 @@
+en:
+  checkouts:
+    user_setted_for_card: User was checked for this cart
+    user_card_error: Error:\ current user was not not set for current cart
+    logins:
+      login_form:
+        returning_customer: Returning Customer
+        login_with_password: Log In with Password
+        forgot_password: Forgot password?
+        submit: Log In with Password
+      registration_form:
+        new_customer: New Customer
+        quick_register: Quick Register
+        create_password_later: You’ll be able to create password later
+        submit: Continue to Checkout
+    summary:
+      summary: Order Summary
+      subtotal: 'Subtotal:'
+      coupon: 'Coupon:'
+      total: 'Order Total:'
+    steps:
+      address: Address
+      delivery: Delivery
+      payment: Payment
+      confirm: Confirm
+      complete: Complete
+    addresses:
+      show:
+        step: Address
+        billing_address: Billing address
+        shipping_address: Shipping address
+        all_fields_required: all fields are required
+        submit: Save and Continue
+    deliveries:
+      show:
+        step: Delivery
+        shipping_method: Shipping method
+        method: Method
+        days: Days
+        price: Price
+        submit: Save and continue
+    payments:
+      show:
+        credit_card: Credit Card
+        submit: Save and continue
+    confirms:
+      show:
+        shipping_address: Shipping Address
+        billing_address: Billing Address
+        shipments: Shipments
+        edit: edit
+        payment_info: Payment Information
+        price: Price
+        quantity: Quantity
+        phone: Phone %{number}
+        submit: Place order
+    completes:
+      show:
+        thanks_for_order: Thank You for your Order!
+        order_confirmation_sent: An order confirmation has been has been sent to %{full_name} %{email}
+        order: 'Order #%{order_id}'
+        phone: Phone %{number}
+        back: Back to Store
+    shared:
+      header:
+        title: Checkout
+      line_items:
+        price: Price
+        quantity: Quantity
+        subtotal: Subtotal
+        book: Book
+      summary:
+        summary: Order summary
+        subtotal: Subtotal
+        coupon: Coupon
+        total: Order Total
+      summary_right:
+        summary: Order summary
+        subtotal: Subtotal
+        coupon: Coupon
+        total: Order Total

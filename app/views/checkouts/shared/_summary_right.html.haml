@@ -1,0 +1,18 @@
+.text-center.general-text-right
+  %p.in-gold-500.font-18= t('.summary')
+  %table.general-summary-table.general-summary-table-right.general-text-right
+    %tr
+      %td
+        %p.font-16= t('.subtotal')
+      %td
+        %p.font-16= orderable.subtotal_format
+    %tr
+      %td
+        %p.font-16= t('.coupon')
+      %td
+        %p.font-16= orderable.discount_format
+    %tr
+      %td
+        %p.font-16= t('.total')
+      %td
+        %p.font-16= orderable.total_format

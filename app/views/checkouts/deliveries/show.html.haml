@@ -1,0 +1,53 @@
+= render 'checkouts/shared/header'
+= simple_form_for @checkout, url: checkouts_delivery_path do |f|
+  %h3.general-subtitle= t('.shipping_method')
+  .visible-xs.mb-30
+    - Delivery.all.each do |delivery|
+      .general-cart-item.divider-lg-bottom
+        %table.table
+          %tr
+            %td.col-half
+              %span.in-grey-600= t('.method')
+            %td.col-half
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label
+                  = f.radio_button :delivery_id, delivery.id, class: 'radio-input', hidden: true
+                  %span.radio-icon
+                  %span.radio-text= delivery.method
+          %tr
+            %td
+              %span.in-grey-600= t('.days')
+            %td
+              %span.font-16.fw-300= delivery.days
+          %tr
+            %td
+              %span.in-grey-600= t('.price')
+            %td
+              %span.font-16.in-gold-500= delivery.price.format
+  .hidden-xs.mb-res-50
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.col-method
+            %span.in-grey-600.ml-40= t('.method')
+          %th
+            %span.in-grey-600= t('.days')
+          %th
+            %span.in-grey-600= t('.price')
+      %tbody
+        - Delivery.all.each do |delivery|
+          %tr
+            %td
+              .form-group.radio.mt-0.mb-0
+                %label.radio-label
+                  = f.radio_button :delivery_id, delivery.id, class: 'radio-input', hidden: true
+                  %span.radio-icon
+                  %span.radio-text= delivery.method
+            %td
+              %span= delivery.days
+            %td
+              %span.font-16.in-gold-500= delivery.price.format
+  .general-text-align.mb-60
+    = render 'checkouts/shared/summary', orderable: @cart
+  .text-center.mb-20
+    = f.button :submit, t('.submit')

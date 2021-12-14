@@ -17,6 +17,7 @@ Book.all.each do |book|
 end
 
 FactoryBot.create_list(:coupon, 50)
+FactoryBot.create_list(:delivery, 3)
 
 # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 AdminUser.first_or_create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

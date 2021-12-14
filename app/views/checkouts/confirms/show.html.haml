@@ -1,0 +1,46 @@
+= render 'checkouts/shared/header'
+.row.mb-20
+  .col-sm-3
+    %h3.general-subtitle= t('.shipping_address')
+    %p.general-address
+      = @checkout.shipping_or_billing_address.full_name
+      = link_to t('.edit'), checkouts_address_path, class: 'general-edit'
+      %br
+      = @checkout.shipping_or_billing_address.address
+      %br
+      #{@checkout.shipping_or_billing_address.city} #{@checkout.shipping_or_billing_address.zip}
+      %br
+      = @checkout.shipping_or_billing_address.country_name
+      %br
+      = t('.phone', number: @checkout.shipping_or_billing_address.phone)
+  .col-sm-3
+    %h3.general-subtitle= t('.billing_address')
+    %p.general-address
+      = @checkout.billing_address.full_name
+      = link_to t('.edit'), checkouts_address_path, class: 'general-edit'
+      %br
+      = @checkout.billing_address.address
+      %br
+      #{@checkout.billing_address.city} #{@checkout.billing_address.zip}
+      %br
+      = @checkout.billing_address.country_name
+      %br
+      = t('.phone', number: @checkout.billing_address.phone)
+  .col-sm-3
+    %h3.general-subtitle= t('.shipments')
+    %p.general-address
+      = @checkout.delivery.days
+      = link_to t('.edit'), checkouts_delivery_path, class: 'general-edit'
+      %br
+      = @checkout.delivery.method
+  .col-sm-3
+    %h3.general-subtitle= t('.payment_info')
+    %p.general-address
+      = @checkout.credit_card.last_four_numbers
+      = link_to t('.edit'), checkouts_payment_path, class: 'general-edit'
+      %br
+      = @checkout.credit_card.expiration_date
+= render 'checkouts/shared/line_items', line_items: @cart.line_items
+= render 'checkouts/shared/summary_right', orderable: @cart
+.text-center
+  = button_to t('.submit'), checkouts_order_path, class: 'btn btn-default mb-20'

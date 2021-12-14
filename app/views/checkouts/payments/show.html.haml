@@ -1,0 +1,17 @@
+= render 'checkouts/shared/header'
+= simple_form_for @checkout, url: checkouts_payment_path, class: '.max-600 mb-80' do |f|
+  %h3.general-subtitle= t('.credit_card')
+  .max-600.mb-80
+    = f.simple_fields_for :credit_card, @checkout.credit_card || @checkout.build_credit_card do |card_form|
+      = card_form.input :number, as: :string, help: 'Please enter a valid credit card number'
+      .row
+        .col-sm-6
+          = card_form.input :cardholder_name
+        .col-sm-3
+          = card_form.input :expiration_date
+        .col-sm-3
+          = card_form.input :cvv
+  .general-text-align.mb-60
+    = render 'checkouts/shared/summary', orderable: @cart
+  .text-center.mb-20
+    = f.button :submit, t('.submit')

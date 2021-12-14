@@ -1,6 +1,4 @@
 class AddressService
-  # attr_reader :type, :address_type, :params_hash
-
   def initialize(params, current_user)
     @params = params
     @current_user = current_user
