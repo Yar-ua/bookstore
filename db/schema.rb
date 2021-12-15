@@ -172,12 +172,12 @@ ActiveRecord::Schema.define(version: 2022_04_16_164738) do
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "EUR", null: false
     t.integer "quantity", default: 1, null: false
-    t.string "cart_type"
-    t.bigint "cart_id"
+    t.string "itemable_type"
+    t.bigint "itemable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_line_items_on_book_id"
-    t.index ["cart_type", "cart_id"], name: "index_line_items_on_cart"
+    t.index ["itemable_type", "itemable_id"], name: "index_line_items_on_itemable"
   end
 
   create_table "orders", force: :cascade do |t|

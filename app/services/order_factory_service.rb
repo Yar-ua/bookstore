@@ -7,7 +7,6 @@ class OrderFactoryService
   end
 
   def create_order!
-    # binding.pry
     order = Order.create!(order_attributes)
     order.attributes = { billing_address: billing_address, shipping_address: shipping_address }
     OrderMailer.with(order: order, user: checkout.user).new_order_email.deliver_now
@@ -16,16 +15,10 @@ class OrderFactoryService
 
   private
 
-  #### ERROR
-  # ActiveModel::MissingAttributeError (can't write unknown attribute `itemable_id`):
-  # need to add line_items to order!!!
-
   def order_attributes
-    # binding.pry
-    # { user: checkout.user, billing_address: billing_address, shipping_address: shipping_address,
-    #   line_items: line_items, credit_card: checkout.credit_card, delivery: checkout.delivery,
-    #   coupon: cart.coupon }
-    { user: checkout.user, credit_card: checkout.credit_card, delivery: checkout.delivery, coupon: cart.coupon }
+    { user: checkout.user, billing_address: billing_address, shipping_address: shipping_address,
+      line_items: line_items, credit_card: checkout.credit_card, delivery: checkout.delivery,
+      coupon: cart.coupon }
   end
 
   def line_items

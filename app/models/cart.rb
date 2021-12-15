@@ -5,13 +5,12 @@ class Cart < ApplicationRecord
 
   belongs_to :user, optional: true
   belongs_to :coupon, optional: true
-  has_many :line_items, dependent: :destroy
-
-  validates :coupon_code, coupon: true
-
-  before_save :set_coupon, if: :coupon_code_present?
+  has_many :line_items, as: :itemable, dependent: :destroy
 
   accepts_nested_attributes_for :line_items, allow_destroy: true
+
+  validates :coupon_code, coupon: true
+  before_save :set_coupon, if: :coupon_code_present?
   delegate :present?, to: :coupon_code, prefix: :coupon_code
   delegate :empty?, to: :line_items
 

@@ -12,13 +12,13 @@
       .visible-xs.visible-sm
         %h3.general-subtitle= t('.billing_address')
         %p.general-info-text= t('.all_fields_required')
-      = f.simple_fields_for :billing_address, @checkout.billing_address || @checkout.build_billing_address do |address_form|
+      = f.simple_fields_for :billing_address, current_user.billing_address || @checkout.billing_address || @checkout.build_billing_address do |address_form|
         = render 'checkouts/shared/address_fields', form: address_form
     .col-md-5.col-md-offset-1.mb-60
       .visible-xs.visible-sm
         %h3.general-subtitle= t('.shipping_address')
       %div
-        = f.simple_fields_for :shipping_address, @checkout.shipping_address || @checkout.build_shipping_address do |shipping_form|
+        = f.simple_fields_for :shipping_address, current_user.shipping_address || @checkout.shipping_address || @checkout.build_shipping_address do |shipping_form|
           = render 'checkouts/shared/address_fields', form: shipping_form
       .form-group.checkbox
         = f.label :use_billing_address, class: 'checkbox-label' do

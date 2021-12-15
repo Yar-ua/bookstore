@@ -20,7 +20,7 @@
   .col-sm-6.hidden-xs.text-right
     %p.general-order-number.mb-0= t('.order', order_id: @order.id)
     %p.general-address.mb-30= @order.created_at_formatted
--# = render 'checkouts/shared/line_items', line_items: @order.line_items
--# = render 'checkouts/shared/summary_right', orderable: @order
+= render 'checkouts/shared/line_items', line_items: @order.line_items
+= render 'checkouts/shared/summary_right', orderable: @order
 .text-center
   = link_to t('.back'), root_path, class: 'btn btn-default mb-20'

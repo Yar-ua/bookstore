@@ -4,7 +4,7 @@ class CreateLineItems < ActiveRecord::Migration[6.1]
       t.references :book, null: false, foreign_key: true
       t.monetize :price
       t.integer :quantity, null: false, default: 1
-      t.references :cart, polymorphic: true
+      t.references :itemable, polymorphic: true
       t.timestamps
     end
   end
