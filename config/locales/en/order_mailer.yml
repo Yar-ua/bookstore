@@ -1,0 +1,6 @@
+en:
+  order_mailer:
+    new_order_email:
+      new_order: 'Order #%{order_id}'
+      hello: Thank You for your Order!
+      your_order: 'You made an order #%{order_id} with total %{total}. We will deliver it to you soon'

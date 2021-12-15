@@ -8,7 +8,7 @@ class SettingsController < ApplicationController
   private
 
   def set_address
-    @billing_address = get_address_by_type(:billing)
-    @shipping_address = get_address_by_type(:shipping)
+    @billing_address = get_address(:billing)
+    @shipping_address = get_address(:shipping)
   end
 end

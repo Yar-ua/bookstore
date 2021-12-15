@@ -3,7 +3,7 @@ module Checkouts
     CURRENT_STEP = 'confirm'.freeze
 
     def create
-      binding.pry
+      # binding.pry
       OrderFactoryService.new(@cart, @checkout).create_order!
       shopping_cart.empty
       destroy_checkout

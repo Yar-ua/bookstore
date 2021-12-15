@@ -15,6 +15,6 @@ class AddressService
   def filter_params
     filter_params = @params.clone
     filter_params.delete(:address_type)
-    filter_params.merge!(user_id: @current_user.id)
+    filter_params
   end
 end

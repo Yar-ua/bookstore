@@ -5,7 +5,7 @@ class Address < ApplicationRecord
   PHONE_REGEXP = /\A\+[0-9]*\z/.freeze
   REJECTED_ATTRIBUTES = %w[id type addressable_type addressable_id].freeze
 
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :addressable, polymorphic: true
 
   validates :first_name, :last_name,
