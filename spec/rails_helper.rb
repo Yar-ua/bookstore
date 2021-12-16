@@ -9,6 +9,8 @@ require 'support/spec_loader'
 require 'devise'
 require 'selenium-webdriver'
 
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -23,8 +25,10 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.include Warden::Test::Helpers
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers
+  config.include ShoppingCartHelper, type: :controller
+  config.include ShoppingCartIntegrationHelper, type: :feature
 
   # Capybara.default_driver = :selenium_chrome
 end

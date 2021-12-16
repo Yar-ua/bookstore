@@ -9,13 +9,16 @@ FactoryBot.define do
     zip { rand(11_111..99_999) }
     country { 'UA' }
     phone { "+#{rand(11_111_111_111..99_999_999_999).round(0)}" }
+    
+    factory :billing_address, class: 'BillingAddress'
+    factory :shipping_address, class: 'ShippingAddress'
 
-    trait :billing do
-      type { 'BillingAddress' }
-    end
+    # trait :billing do
+    #   type { 'BillingAddress' }
+    # end
 
-    trait :shipping do
-      type { 'ShippingAddress' }
-    end
+    # trait :shipping do
+    #   type { 'ShippingAddress' }
+    # end
   end
 end

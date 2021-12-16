@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   NAME_REGEXP = /\A[a-zA-Z]*\z/.freeze
-  ADDRESS_REGEXP = /\A[a-zA-Z0-9 \-,]*\z/.freeze
+  ADDRESS_REGEXP = /\A[a-zA-Z0-9 \-\,]*\z/.freeze
   ZIP_REGEXP = /\A[0-9\-]*\z/.freeze
   PHONE_REGEXP = /\A\+[0-9]*\z/.freeze
   REJECTED_ATTRIBUTES = %w[id type addressable_type addressable_id].freeze

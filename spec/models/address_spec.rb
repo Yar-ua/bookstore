@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
-  let(:user) { create(:user) }
-  let(:address) { create(:address, :billing, user: user) }
+  # let(:address) { create(:address, :billing) }
+  let(:address) { create(:billing_address) }
 
   describe 'validation' do
     it { expect(address).to validate_presence_of(:first_name) }
@@ -15,6 +15,6 @@ RSpec.describe Address, type: :model do
   end
 
   describe 'with assosiations' do
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:addressable) }
   end
 end
