@@ -13,8 +13,13 @@ FactoryBot.define do
     end
 
     trait :filled do
-      after(:build) do |cart, evaluator|
-        cart.line_items = build_list(:line_item, evaluator.line_items_size)
+      after(:build) do |cart, _evaluator|
+        book = create(:book)
+        book.save
+        line_item = build(:line_item, book: book)
+        cart.line_items.build { line_item }
+        cart.line_items.last.book_id = book.id
+        cart.save!
       end
     end
   end

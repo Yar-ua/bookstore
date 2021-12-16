@@ -12,14 +12,14 @@ module AddressesHelper
   def get_address(type)
     address = address_type(type)
     return address if address.present?
-    
+
     construct_address_class(type)
   end
-  
+
   def address_type(type)
     current_user.public_send("#{type}_address")
   end
-  
+
   def construct_address_class(type)
     # this method returns new object of BillingAddress or ShippingAddress classes
     # class name constructed from string classname

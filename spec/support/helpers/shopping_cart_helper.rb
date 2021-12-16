@@ -1,9 +1,8 @@
 module ShoppingCartHelper
   def stub_cart(*args, **kwargs)
-    binding.pry
-    # cart = create(:cart, *args, **kwargs)
-    # session[ShoppingCartService::CART_SESSION_KEY] = cart.id
-    # cart
+    cart = create(:cart, *args, **kwargs)
+    session[ShoppingCartService::CART_SESSION_KEY] = cart.id
+    cart
   end
 
   def stub_checkout(*args, **kwargs)

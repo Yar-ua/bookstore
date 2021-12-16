@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 RSpec.shared_examples 'checkout show' do
   context 'when user is not signed in' do
     before do
@@ -24,15 +25,10 @@ RSpec.shared_examples 'checkout show' do
 
   context 'when user signed in' do
     let(:user) { create(:user) }
-    let!(:cart) { create(:cart, :filled, user: user) }
 
     before do
       sign_in user
-      # stub_cart(:filled, user: user)
-      # cart = create(:cart, :filled, user: user)
-      # binding.pry
-      session[ShoppingCartService::CART_SESSION_KEY] = cart.id
-      # cart
+      stub_cart(:filled, user: user)
       get :show
     end
 
@@ -53,3 +49,4 @@ RSpec.shared_examples 'checkout show' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

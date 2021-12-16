@@ -15,7 +15,7 @@ class LineItem < ApplicationRecord
   def subtotal
     price * quantity
   end
-  
+
   def clone_attributes
     attributes.reject { |attribute| REJECTED_LINE_ITEM_ATTRIBUTES.include?(attribute) }
   end

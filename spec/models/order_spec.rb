@@ -1,6 +1,8 @@
 require 'aasm/rspec'
 
-RSpec.describe Order, :step_ten do
+RSpec.describe Order do
+  let(:order) { described_class.new }
+
   describe 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:coupon).optional }
@@ -13,32 +15,32 @@ RSpec.describe Order, :step_ten do
 
   describe 'state machine' do
     it do
-      is_expected.to transition_from(described_class::STATE_IN_PROGRESS)
+      expect(order).to transition_from(described_class::STATE_IN_PROGRESS)
         .to(described_class::STATE_IN_QUEUE).on_event(:pay)
     end
 
     it do
-      is_expected.to transition_from(described_class::STATE_IN_QUEUE)
+      expect(order).to transition_from(described_class::STATE_IN_QUEUE)
         .to(described_class::STATE_IN_DELIVERY).on_event(:deliver)
     end
 
     it do
-      is_expected.to transition_from(described_class::STATE_IN_DELIVERY)
+      expect(order).to transition_from(described_class::STATE_IN_DELIVERY)
         .to(described_class::STATE_DELIVERED).on_event(:complete)
     end
 
     it do
-      is_expected.to transition_from(described_class::STATE_IN_PROGRESS)
+      expect(order).to transition_from(described_class::STATE_IN_PROGRESS)
         .to(described_class::STATE_CANCELED).on_event(:cancel)
     end
 
     it do
-      is_expected.to transition_from(described_class::STATE_IN_QUEUE)
+      expect(order).to transition_from(described_class::STATE_IN_QUEUE)
         .to(described_class::STATE_CANCELED).on_event(:cancel)
     end
 
     it do
-      is_expected.to transition_from(described_class::STATE_IN_DELIVERY)
+      expect(order).to transition_from(described_class::STATE_IN_DELIVERY)
         .to(described_class::STATE_CANCELED).on_event(:cancel)
     end
   end

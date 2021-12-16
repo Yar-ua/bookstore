@@ -6,6 +6,7 @@ module ShoppingCartIntegrationHelper
   def stub_checkout(user, **attributes)
     prev_url = current_url
     visit checkouts_address_path
+    Checkout.create(user: user)
     Checkout.where(user: user).last.update!(attributes)
     visit prev_url if prev_url.present?
   end

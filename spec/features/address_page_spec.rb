@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Current user profile email and password settings page' do
   let(:user) { create(:user) }
-  let(:billing) { create(:address, :billing, user: user) }
+  let(:billing) { create(:billing_address, user: user) }
 
   before do
     login_as user, scope: :user
@@ -31,7 +31,7 @@ RSpec.describe 'Current user profile email and password settings page' do
   it { expect(page).to have_button(id: 'save_shipping_button') }
 
   context 'when create and update billing' do
-    let(:billing) { attributes_for(:address, :billing, user_id: user.id) }
+    let(:billing) { attributes_for(:billing_address, user: user) }
 
     before do
       fill_in 'billing_form[first_name]', with: billing[:first_name]
@@ -48,7 +48,7 @@ RSpec.describe 'Current user profile email and password settings page' do
   end
 
   context 'when update billing' do
-    let(:new_billing) { attributes_for(:address, :billing, user: user) }
+    let(:new_billing) { attributes_for(:billing_address, user: user) }
 
     before do
       fill_in 'billing_form[first_name]', with: 'Abcabc'

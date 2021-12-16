@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   NAME_REGEXP = /\A[a-zA-Z]*\z/.freeze
-  ADDRESS_REGEXP = /\A[a-zA-Z0-9 \-\,]*\z/.freeze
+  ADDRESS_REGEXP = /\A[a-zA-Z0-9 \-,]*\z/.freeze
   ZIP_REGEXP = /\A[0-9\-]*\z/.freeze
   PHONE_REGEXP = /\A\+[0-9]*\z/.freeze
   REJECTED_ATTRIBUTES = %w[id type addressable_type addressable_id].freeze
@@ -10,11 +10,11 @@ class Address < ApplicationRecord
 
   validates :first_name, :last_name,
             presence: true,
-            format: { with: NAME_REGEXP,
-                      message: 'Consist of a-z, A-Z only, no special symbols' },
             length: { maximum: 50 }
 
-  validates :address, :city, :country,
+  validates :address, :city, presence: true
+
+  validates :country,
             presence: true,
             format: { with: ADDRESS_REGEXP,
                       message: 'Consist of a-z, A-Z, 0-9,’,’, ‘-’, ‘ ’ only, \

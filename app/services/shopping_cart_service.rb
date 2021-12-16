@@ -13,7 +13,7 @@ class ShoppingCartService
   def current_cart
     @current_cart ||= current_user&.cart || Cart.find_by(id: session[CART_SESSION_KEY]) || Cart.new(user: current_user)
   end
-  
+
   def empty
     session.delete(CART_SESSION_KEY)
     current_cart.destroy if current_cart.persisted?
