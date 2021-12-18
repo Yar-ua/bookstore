@@ -1,0 +1,9 @@
+%p.lead.small.mb-10.visible-xs= t('.sort_by')
+.dropdowns.dropdown.general-order-dropdown
+  %a.dropdown-toggle.lead.small.mb-0{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'}
+    = filter_presenter.selected_option[:label]
+    %i.fa.fa-angle-down.dropdown-icon.pull-right
+  %ul.dropdown-menu
+    - filter_presenter.options.each do |option|
+      %li{class: class_names(active: option[:selected])}
+        = link_to option[:label], option[:path]

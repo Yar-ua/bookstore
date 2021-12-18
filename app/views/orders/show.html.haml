@@ -1,0 +1,40 @@
+%h1.general-title-margin= t('.title', order_id: @order.id)
+.row.mb-20
+  .col-sm-3
+    %h3.general-subtitle.mt-0= t('.shipping_address')
+    %p.general-address
+      = @order.shipping_address.full_name
+      %br
+      = @order.shipping_address.address
+      %br
+      #{@order.shipping_address.city} #{@order.shipping_address.zip}
+      %br
+      = @order.shipping_address.country_name
+      %br
+      = t('.phone', number: @order.shipping_address.phone)
+  .col-sm-3
+    %h3.general-subtitle.mt-0= t('.billing_address')
+    %p.general-address
+      = @order.billing_address.full_name
+      %br
+      = @order.billing_address.address
+      %br
+      #{@order.billing_address.city} #{@order.billing_address.zip}
+      %br
+      = @order.billing_address.country_name
+      %br
+      = t('.phone', number: @order.billing_address.phone)
+  .col-sm-3
+    %h3.general-subtitle.mt-0= t('.shipments')
+    %p.general-address
+      = @order.delivery.days
+      %br
+      = @order.delivery.method
+  .col-sm-3
+    %h3.general-subtitle.mt-0= t('.payment_info')
+    %p.general-address
+      = @order.credit_card.last_four_numbers
+      %br
+      = @order.credit_card.expiration_date
+= render 'checkouts/shared/line_items', line_items: @order.line_items
+= render 'checkouts/shared/summary_right', orderable: @order

@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   include Orderable
   include AASM
+  
+  default_scope -> { order(created_at: :desc) }
 
   belongs_to :user
   belongs_to :coupon, optional: true
@@ -30,6 +32,10 @@ class Order < ApplicationRecord
     event :cancel do
       transitions from: %i[in_progress in_queue in_delivery], to: :canceled
     end
+  end
+  
+  def self.filter_by_user_status(user, status = nil)
+    where(user: user).yield_self { |relation| status.present? ? relation.where(status: status) : relation }
   end
 
   private

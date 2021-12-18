@@ -1,0 +1,24 @@
+en:
+  orders:
+    status:
+      all: All
+      in_progress: In Progress
+      in_queue: In Queue
+      in_delivery: In Delivery
+      delivered: Delivered
+      canceled: Canceled
+    index:
+      title: My orders
+      number: Number
+      completed_at: Completed at
+      status: Status
+      total: Total
+    filter:
+      sort_by: Sort by
+    show:
+      title: 'Order #%{order_id}'
+      shipping_address: Shipping Address
+      phone: Phone %{number}
+      billing_address: Billing Address
+      shipments: Shipments
+      payment_info: Payment Information

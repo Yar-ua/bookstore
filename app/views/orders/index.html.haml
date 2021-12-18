@@ -1,0 +1,49 @@
+%h1.mt-0.mb-25= t('.title')
+= render 'filter'
+.visible-xs
+  .general-cart-item.divider-lg-bottom.pt-0
+    %table.table
+      - @orders.each do |order|
+        %tr
+          %td.col-half
+            %span.in-grey-600= t('.number')
+          %td.col-half
+            = link_to order.number, order_path(order), class: 'general-order-number'
+        %tr
+          %td
+            %span.in-grey-600= t('.completed_at')
+          %td
+            %span.in-grey-900.font-16.fw-300= order.completed_at_formatted
+        %tr
+          %td
+            %span.in-grey-600= t('.status')
+          %td
+            %span.font-16.in-grey-900.fw-300= order.status_name
+        %tr
+          %td
+            %span.in-grey-600= t('.total')
+          %td
+            %strong.font-16= order.total_format
+.hidden-xs.mb-res-50
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          %span.in-grey-600= t('.number')
+        %th
+          %span.in-grey-600= t('.completed_at')
+        %th
+          %span.in-grey-600= t('.status')
+        %th
+          %span.in-grey-600= t('.total')
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td
+            = link_to order.number, order_path(order), class: 'general-order-number'
+          %td
+            %span.in-grey-900.font-16.fw-300= order.completed_at_formatted
+          %td
+            %span.font-16.in-grey-900.fw-300= order.status_name
+          %td
+            %strong.font-16= order.total_format
