@@ -1,4 +1,4 @@
-RSpec.describe Checkouts::PaymentsController, :step_ten do
+RSpec.describe Checkouts::PaymentsController do
   describe '#show' do
     it_behaves_like 'checkout show'
   end

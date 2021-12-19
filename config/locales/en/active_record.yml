@@ -62,6 +62,15 @@ en:
         updated_at: Updated at
         status_name: Status
         status: Status
+      order:
+        user: User
+        number: Number
+        line_items: Order items
+        created_at: Created at
+        updated_at: Updated at
+        completed_at: Completed at
+        status_name: Status
+        status: Status
     errors:
       messages:
         invalid_coupon: Is invalid. Try another

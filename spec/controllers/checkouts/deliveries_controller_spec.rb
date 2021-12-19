@@ -1,4 +1,4 @@
-RSpec.describe Checkouts::DeliveriesController, :step_ten do
+RSpec.describe Checkouts::DeliveriesController do
   describe '#show' do
     it_behaves_like 'checkout show'
   end

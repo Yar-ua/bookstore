@@ -1,7 +1,7 @@
 module Checkouts
   class CompletesController < MasterController
     def show
-      @order = Order.where(user: current_user).last.decorate
+      @order = Order.where(user: current_user).first.decorate
     end
 
     private

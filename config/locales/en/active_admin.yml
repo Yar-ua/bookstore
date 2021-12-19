@@ -11,3 +11,16 @@ en:
       successfully_rejected: Review was rejected!
       approve: Approve
       reject: Reject
+    orders:
+      pay: Order payed and moved to queue
+      deliver: In delivery
+      complete: Delivered
+      cancel: Cancel
+      successfully_delivering: Order is in deliver
+      successfully_delivered: Order is delivered
+      successfully_canceled: Order is canceled
+      line_items:
+        title: Title
+        price: Price
+        quantity: Quantity
+        subtotal: Subtotal

@@ -10,7 +10,7 @@ class OrderDecorator < Draper::Decorator
   def created_at_formatted
     h.l(created_at, format: '%B %e, %Y')
   end
-  
+
   def completed_at_formatted
     h.l(completed_at, format: '%Y-%m-%d') if completed_at
   end
@@ -22,4 +22,6 @@ class OrderDecorator < Draper::Decorator
   def number
     "##{id}"
   end
+
+  alias name number
 end

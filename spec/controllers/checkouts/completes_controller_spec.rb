@@ -1,4 +1,4 @@
-RSpec.describe Checkouts::CompletesController, :step_ten do
+RSpec.describe Checkouts::CompletesController do
   describe '#show' do
     context 'when user is not signed in' do
       before do

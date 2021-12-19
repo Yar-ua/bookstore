@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th= t('.title')
+      %th= t('.price')
+      %th= t('.quantity')
+      %th= t('.subtotal')
+  %tbody
+    - @order.line_items.each do |line_item|
+      %tr
+        %td= link_to line_item.book.title, admin_book_path(line_item.book)
+        %td= line_item.price_to_currency
+        %td= line_item.quantity
+        %td= line_item.subtotal_format

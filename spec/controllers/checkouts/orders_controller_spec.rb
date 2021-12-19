@@ -1,4 +1,4 @@
-RSpec.describe Checkouts::OrdersController, :step_ten do
+RSpec.describe Checkouts::OrdersController do
   let(:user) { create(:user) }
 
   before do
