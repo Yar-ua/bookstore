@@ -10,7 +10,11 @@ class AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:billing || :shipping).permit(:first_name, :last_name, :address, :city, :zip, :country, :phone,
-                                                 :address_type)
+    params.require(address_form_type).permit(:first_name, :last_name, :address, 
+                                         :city, :zip, :country, :phone, :address_type)
+  end
+  
+  def address_form_type
+    params[:billing_form].present? ? :billing_form : :shipping_form
   end
 end

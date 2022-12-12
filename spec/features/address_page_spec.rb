@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Current user profile email and password settings page' do
   let(:user) { create(:user) }
-  let(:billing) { attributes_for(:address, :billing) }
+  let(:billing) { create(:address, :billing, user: user) }
 
   before do
     login_as user, scope: :user
@@ -16,30 +16,30 @@ RSpec.describe 'Current user profile email and password settings page' do
   it { expect(page).to have_selector 'h3', text: I18n.t('settings.billing_address') }
   it { expect(page).to have_selector 'h3', text: I18n.t('settings.shipping_address') }
 
-  it { expect(page).to have_field 'billing_first_name', placeholder: 'Please enter your first name' }
-  it { expect(page).to have_field 'billing_last_name' }
-  it { expect(page).to have_field 'billing_address' }
-  it { expect(page).to have_field 'billing_city' }
-  it { expect(page).to have_field 'billing_zip' }
-  it { expect(page).to have_select 'billing_country' }
-  it { expect(page).to have_field 'billing_phone' }
+  it { expect(page).to have_field 'billing_form_first_name', placeholder: 'Please enter your first name' }
+  it { expect(page).to have_field 'billing_form_last_name' }
+  it { expect(page).to have_field 'billing_form_address' }
+  it { expect(page).to have_field 'billing_form_city' }
+  it { expect(page).to have_field 'billing_form_zip' }
+  it { expect(page).to have_select 'billing_form_country' }
+  it { expect(page).to have_field 'billing_form_phone' }
   it { expect(page).to have_button(id: 'save_billing_button') }
-  it { expect(page).to have_field 'shipping_first_name' }
-  it { expect(page).to have_field 'shipping_last_name' }
-  it { expect(page).to have_field 'shipping_city' }
-  it { expect(page).to have_field 'shipping_phone' }
+  it { expect(page).to have_field 'shipping_form_first_name' }
+  it { expect(page).to have_field 'shipping_form_last_name' }
+  it { expect(page).to have_field 'shipping_form_city' }
+  it { expect(page).to have_field 'shipping_form_phone' }
   it { expect(page).to have_button(id: 'save_shipping_button') }
 
   context 'when create and update billing' do
     let(:billing) { attributes_for(:address, :billing, user_id: user.id) }
 
     before do
-      fill_in 'billing[first_name]', with: billing[:first_name]
-      fill_in 'billing[last_name]', with: billing[:last_name]
-      fill_in 'billing[address]', with: billing[:address]
-      fill_in 'billing[city]', with: billing[:city]
-      fill_in 'billing[zip]', with: billing[:zip]
-      fill_in 'billing[first_name]', with: billing[:phone]
+      fill_in 'billing_form[first_name]', with: billing[:first_name]
+      fill_in 'billing_form[last_name]', with: billing[:last_name]
+      fill_in 'billing_form[address]', with: billing[:address]
+      fill_in 'billing_form[city]', with: billing[:city]
+      fill_in 'billing_form[zip]', with: billing[:zip]
+      fill_in 'billing_form[first_name]', with: billing[:phone]
       find(id: 'save_billing_button', class: 'btn').click
     end
 
@@ -48,10 +48,10 @@ RSpec.describe 'Current user profile email and password settings page' do
   end
 
   context 'when update billing' do
-    let(:new_billing) { user.addresses(attributes_for(:address, :billing, user_id: user.id)) }
+    let(:new_billing) { attributes_for(:address, :billing, user: user) }
 
     before do
-      fill_in 'billing[first_name]', with: 'Abcabc'
+      fill_in 'billing_form[first_name]', with: 'Abcabc'
       find(id: 'save_billing_button', class: 'btn').click
     end
 

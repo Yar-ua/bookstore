@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 2022_04_05_193059) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.string "type", null: false
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "address", null: false
@@ -51,10 +54,10 @@ ActiveRecord::Schema.define(version: 2022_04_05_193059) do
     t.integer "zip", null: false
     t.string "country", null: false
     t.string "phone", null: false
-    t.integer "address_type", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["type", "addressable_type", "addressable_id"], name: "index_addresses_on_type_and_addressable_type_and_addressable_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 

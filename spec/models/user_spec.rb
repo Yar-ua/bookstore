@@ -30,6 +30,8 @@ RSpec.describe User do
   end
 
   describe 'with assosiations' do
-    it { is_expected.to have_many(:addresses).dependent(:destroy) }
+    it { is_expected.to have_one(:billing_address) }
+    it { is_expected.to have_one(:shipping_address) }
+    it { is_expected.to have_one(:cart) }
   end
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :address do
-    association :user, factory: :user
+    association :addressable, factory: :user
 
     first_name { FFaker::Name.first_name }
     last_name { FFaker::Name.last_name }
@@ -11,11 +11,11 @@ FactoryBot.define do
     phone { "+#{rand(11_111_111_111..99_999_999_999).round(0)}" }
 
     trait :billing do
-      address_type { :billing }
+      type { 'BillingAddress' }
     end
 
     trait :shipping do
-      address_type { :shipping }
+      type { 'ShippingAddress' }
     end
   end
 end

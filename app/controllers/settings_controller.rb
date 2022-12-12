@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  include SettingsHelper
+  include AddressesHelper
   before_action :authenticate_user!
   before_action :set_address
 

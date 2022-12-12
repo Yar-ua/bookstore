@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
-  let(:address) { create(:address, :billing) }
+  let(:user) { create(:user) }
+  let(:address) { create(:address, :billing, user: user) }
 
   describe 'validation' do
     it { expect(address).to validate_presence_of(:first_name) }

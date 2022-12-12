@@ -1,4 +1,4 @@
-= simple_form_for address_form, as: :"#{address_type}", url: addresses_path, validate: true, html: { method: :post } do |f|
+= simple_form_for address_form, as: "#{address_type}"'_form'.to_sym, url: addresses_path, validate: true, html: { method: :post } do |f|
   .form-group
     = f.input :address_type, input_html: { value: address_type, type: 'hidden' }
     = f.input :first_name, label: "First Name", autofocus: true, class: 'form-control', placeholder: "Please enter your first name"
